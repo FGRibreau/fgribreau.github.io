@@ -35,13 +35,13 @@ gallery.start({interval: 20000});
 function BackgroundAnimation(el, interval){
   const State = {
     scale:{min:0.9, max: 1, cur:1, step: 0.1},
-    rotateX:{min:-2, max:2, cur:0, step: 0.2},
-    rotateY:{min:-10, max:10, cur:0, step: 0.2},
-    rotateZ:{min:-2, max:2, cur:0, step: 0.2},
+    rotateX:{min:-2, max:2, cur:0, step: 0.5},
+    rotateY:{min:-10, max:10, cur:0, step: 0.5},
+    rotateZ:{min:-2, max:2, cur:0, step: 0.5},
     translateX:{min:-40, max:40, cur:0, step: 4},
     translateY:{min:-40, max:40, cur:0, step: 4},
-    posX:{min:0, max:100, cur:0, step: 10},
-    posY:{min:0, max:100, cur:0, step: 10}
+    posX:{min:0, max:100, cur:0, step: 30},
+    posY:{min:0, max:100, cur:0, step: 30}
   };
 
   function apply(state){console
