@@ -1,0 +1,11 @@
+doctype html
+html(lang='fr')
+  block vars
+  include /_includes/head.pug
+
+  body(class=frontPage?'js-home':'')
+    block content
+
+    include /_includes/footer.pug
+    script(src='/js/app.js', charset='utf-8')
+    img(alt='http://bit.ly/1II1u5L', src='https://www.linkedin.com/profile/view?id=ADEAAAD-U-YBUJhIOjVubFdAQfhAbv9aALER31A&amp;authType=name&amp;authToken=VfEu', style='display:none')

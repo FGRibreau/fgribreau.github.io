@@ -1,0 +1,14 @@
+extends /_layout/default.pug
+
+block vars
+  - var page_title = site.title
+  - var page_description = site.description
+
+block content
+
+  header.header(style=`background-image: url(${photos[0].url})`)
+    include /_includes/nav.pug
+    .header__content
+      .header__catchline
+        h1.title.title--light=site.name
+        p.text.text--light=site.description
