@@ -11,6 +11,8 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   letter-spacing: -.15px;
+  perspective: 500px;
+  perspective-origin: 50% 50%;
 }
 
 li {
