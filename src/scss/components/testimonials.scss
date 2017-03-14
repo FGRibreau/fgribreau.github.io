@@ -13,20 +13,6 @@
     position:relative;
   }
 
-  @keyframes testimonialToggle {
-    0%{
-      transform: rotateX(0deg) translateY(0vh);
-    }
-
-    10%{
-      transform: rotateX(37deg) translateY(0vh);
-    }
-
-    100%{
-      transform: rotateX(37deg) translateY(-100vh);
-    }
-  }
-
   .testminials__testimonial  {
     position:absolute;
     background: #333;
@@ -136,4 +122,29 @@
     }
   }
 
+}
+
+@media (max-width: 500px){
+  .testimonials__content{
+    overflow-x:hidden !important;
+    overflow-y:auto !important;
+  }
+
+    .testminials__testimonial  {
+      position:relative !important;
+      transition: initial !important;
+      margin-bottom: 1rem;
+      border-radius: 0px;
+
+      &.--hide{
+        transition: initial !important;
+        transform: scale(1) !important;
+        transition:transform 400ms ease-out;
+      }
+
+      .part.--hide{
+        transform: scale(1) !important;
+        height: auto !important;
+      }
+    }
 }
