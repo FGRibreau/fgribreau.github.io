@@ -5,7 +5,7 @@
 body {
   position: relative;
   font: 15px/1.4 $font-base,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  background-color: $bg-color;
+  background: $dark-color;
   background: linear-gradient(to top, rgba(0,0,0,1) 0%,rgba(26,26,26,1) 100%);
   color: $font-color;
   font-size: 15px;
@@ -50,5 +50,6 @@ strong {
 @media (max-width: 600px) {
   body, html {
     font-size: 11px;
+    background: $dark-color;
   }
 }
