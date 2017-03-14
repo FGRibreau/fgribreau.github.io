@@ -11,7 +11,7 @@
   align-items: center;
   justify-content:space-between;
 
-  color: $font-color;
+  color: $font-color-light;
   letter-spacing: -.15px;
   font-size: 12px;
   font-weight: 300;
@@ -24,13 +24,12 @@
 
     a{
       cursor:pointer;
-      // border: 1px solid #000;
       padding:10px;
-      color: $font-color;
+      color: #ccc;
+      font-size: 14px;
 
       &:hover {
         color: $font-color-light;
-        color: $font-color;
       }
     }
   }
@@ -42,17 +41,22 @@
 
 .footer--fixed {
   position: static;
-  .footer__links a:hover {
-    color: #000;
-  }
 }
 
 @media screen and (max-width: 550px) {
+  .footer {
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer__links {
+    li {
+      display: block;
+      margin: 15px 0px 0px 0px;
+    }
+  }
   .footer__copyright {
     display: none;
   }
-}
-
-.footer__mixpanel{
-  display:none;
 }

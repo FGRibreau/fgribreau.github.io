@@ -6,12 +6,13 @@ body {
   position: relative;
   font: 15px/1.4 $font-base,'Helvetica Neue',Helvetica,Arial,sans-serif;
   background-color: $bg-color;
+  background: linear-gradient(to top, rgba(0,0,0,1) 0%,rgba(26,26,26,1) 100%);
   color: $font-color;
   font-size: 15px;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   letter-spacing: -.15px;
-  perspective: 500px;
+  perspective: 100vh;
   perspective-origin: 50% 50%;
 }
 
