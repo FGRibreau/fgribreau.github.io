@@ -124,8 +124,8 @@
 
 }
 
-@media (max-width: 500px){
-  .testimonials{
-    display:none;
+@media (max-width: 600px){
+  .testimonials, .testimonials__content{
+    display:none !important;
   }
 }
