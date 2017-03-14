@@ -127,5 +127,7 @@
 @media (max-width: 800px){
   .testimonials, .testimonials__content{
     display:none !important;
+    overflow:hidden;
+    height: 0px;
   }
 }
