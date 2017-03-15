@@ -7,8 +7,9 @@
     "start-dev": "gulp serve",
     "postinstall": "npm run build",
     "build": "gulp default",
-    "deploy": "npm run gh-pages",
-    "gh-pages": "gh-pages -d dist -b master --message deploy",
+    "deploy": "npm-release patch",
+    "postversion":"npm run --silent gh-pages",
+    "gh-pages": "gh-pages -d dist -b master --message $npm_package_version",
     "updtr": "updtr"
   },
   "engines": {
