@@ -113,6 +113,10 @@
             display: inline-block;
             margin-left: 0.5rem;
 
+            &:first-child, &:nth-child(2){
+              font-weight: 600;
+            }
+
             &::before {
               content: '#';
             }

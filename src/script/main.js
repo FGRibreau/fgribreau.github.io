@@ -11,25 +11,32 @@ function $$(selector, el = document){
 }
 
 function $(selector){
-  return document.querySelector(selector);
+  const el =  document.querySelector(selector);
+
+  const wrap = {
+    0: el,
+    tap: (f) => {
+      f(el);
+      return wrap;
+    }
+  };
+
+  return wrap;
 }
 
-function Gallery(photos) {
-  let cursor = 3;
+function Gallery(photos, cursor = 3) {
 
   function next(options) {
     cursor = cursor + 1 > photos.length -1
       ? 0
       : cursor + 1;
 
-    const img = new Image();
-    img.onload = () => render(photos[cursor]);
-    img.src = photos[cursor].url;
+    render(photos[cursor]);
   }
 
   function render({url, description}) {
-    $('.header').style.backgroundImage = `url(${url})`;
-    $('.footer__copyright').innerText = description;
+    $('.header')[0].style.backgroundImage = `url(${url})`;
+    $('.footer__copyright')[0].innerText = description;
   }
 
   return {next: next};
@@ -38,8 +45,8 @@ function Gallery(photos) {
 function BackgroundAnimation(el, interval){
   const State = {
     rotateX:{min:-10, max:10, cur:4, step: 2, render:(x) => `rotateX(${x}deg)`},
-    rotateY:{min:-5, max:5, cur:3, step: 1, render:(x) => `rotateY(${x}deg)`},
-    rotateZ:{min:-2, max:2, cur:0, step: 0.5, render:(x) => `rotateZ(${x}deg)`},
+    rotateY:{min:-5, max:5, cur:3, step: 2, render:(x) => `rotateY(${x}deg)`},
+    rotateZ:{min:-2, max:2, cur:0, step: 1, render:(x) => `rotateZ(${x}deg)`},
     translateX:{min:-5, max:5, cur:0, step: 1, render:(x) => `translateX(${x}%)`},
     translateZ:{min:-30, max:-10, cur:-10, step: 5, render:(x) => `translateZ(${x}vh)`},
   };
@@ -51,81 +58,88 @@ function BackgroundAnimation(el, interval){
     }, '');
   }
 
-  apply(State);
-
   const findNextState = (function(){
     const keys = shuffle(Object.keys(State));
 
     return () => {
       keys.forEach(k => {
-        const {min, max, cur, step} = State[k];
-        State[k].cur = Math.max(Math.min(cur + (Math.random() > 0.5 ? 1:-1) * step, max), min);
+        const {min, max, step} = State[k];
         State[k].cur = Math.max(Math.min((Math.random() > 0.5 ? 1:-1) * step, max), min);
-        console.log(k, State[k].cur);
       })
       apply(State);
     };
   })();
-
-  setTimeout(findNextState, interval);
 
   return {
     findNextState:findNextState
   };
 }
 
+
 // Testimonials
-function Testimonials(_els, {onNextTestimonial, onNextPart}){
-  const els = Array.from(_els);
-  let elCursor = -1;
+const hide = (el) => el.classList.add('--hide');
+const show = (el) => el.classList.remove('--hide');
 
-  els.forEach(hide);
+function Testimonials(els, {onNextTestimonial, onNextPart}){
+  const _els = Array.from(els);
+  let _cursor = -1;
+  let _nextTimeout;
 
-  function hide(el){
-    el.classList.add('--hide');
-  }
+  _els.forEach(hide);
 
-  function show(el){
-    el.classList.remove('--hide');
-  }
+  let next = noop;
 
   function nextTestimonial(){
     onNextTestimonial();
-    elCursor = elCursor+1 > els.length-1 ? 0 : elCursor+1;
-    const el = els[elCursor];
+    _cursor = _cursor+1 > _els.length-1 ? 0 : _cursor+1;
+    const el = _els[_cursor];
     show(el);
 
     const parts = $$('.part', el);
     parts.forEach(hide);
 
-    function displayNextPart(previousPart){
-      onNextPart();
-      if(previousPart){
-        hide(previousPart);
-      }
+    displayNextPart(el, parts);
+  }
 
-      const part = parts.shift();
-      if(!part){
-        hide(el);
-        setTimeout(nextTestimonial, 0);
-        return;
-      }
+  function displayNextPart(el, parts, previousPart){
+    clearTimeout(_nextTimeout);
+    onNextPart();
 
-      show(part);
-      const wait = Math.max(part.innerText.split(' ').length * 0.4 * 1000, 3000);
-      setTimeout(displayNextPart.bind(null, part), wait);
+    if(previousPart){
+      hide(previousPart);
     }
 
-    displayNextPart();
+    const part = parts.shift();
+    if(!part){
+      hide(el);
+      el = null;
+      parts = null;
+      previousPart = null;
+      _nextTimeout = setTimeout(nextTestimonial, 0);
+      return;
+    }
+
+    show(part);
+    const wait = Math.max(part.innerText.split(' ').length * 0.4 * 1000, 3000);
+    next = displayNextPart.bind(null, el, parts, part);
+    _nextTimeout = setTimeout(next, wait);
   }
 
   nextTestimonial();
+
+  return {
+    next: () => next()
+  };
 }
 
-const {next} = Gallery(config.photos);
-const {findNextState} = BackgroundAnimation(document.querySelector('.header'), 1500);
-
-Testimonials($$('.testminials__testimonial'),{
-  onNextPart: findNextState,
-  onNextTestimonial: next,
+// Bootstraping
+const {next: nextPhoto} = Gallery(config.photos, 0);
+const {findNextState: nextBackgroundAnimation} = BackgroundAnimation($('.header')[0], 1500);
+const {next: nextSlide} = Testimonials($$('.testminials__testimonial'),{
+  onNextPart: nextBackgroundAnimation,
+  onNextTestimonial: nextPhoto,
 });
+
+// UI interactions
+$('.header')[0].addEventListener('click', nextSlide, false);
+document.addEventListener('keydown', nextSlide, false)
