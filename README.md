@@ -2,6 +2,8 @@
 
 ## How to dev
 
+Always work on `website` branch.
+
 ```
 npm run start-dev
 ```
