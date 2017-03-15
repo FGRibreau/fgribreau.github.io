@@ -31,7 +31,9 @@ function Gallery(photos, cursor = 3) {
       ? 0
       : cursor + 1;
 
-    render(photos[cursor]);
+    const img = new Image();
+    img.onload = () => render(photos[cursor]);
+    img.src = photos[cursor].url;
   }
 
   function render({url, description}) {
