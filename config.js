@@ -31,7 +31,7 @@ module.exports = {
     // when:2017,
     tags: 'cloud,orchestration,microservices,SOA,scalabilité'.split(',')
   },{
-    quote: `Suite à un échange d'une demi-journée lié à des problèmes de performances de base de données, les conseils apportés par François-Guillaume nous ont permis de baisser rapidement les temps de réponses de nos services.Il maîtrise son sujet et nous a apporté des conseils sur le court et moyen terme`,
+    quote: `Suite à un échange d'une demi-journée lié à des problèmes de performances de base de données, les conseils apportés par François-Guillaume nous ont permis de baisser rapidement les temps de réponses de nos services. Il maîtrise son sujet et nous a apporté des conseils sur le court et moyen terme`,
     who: 'Berger S., Qivivo CTO',
     // when:2015,
     tags: 'database,postgresql,performance,optimisation'.split(',')

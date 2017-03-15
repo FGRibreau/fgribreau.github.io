@@ -1,0 +1,721 @@
+/*
+ Dimanche 19 Juin 2011 - mini projet
+ - Refonte du css du CV
+ - Ajout d'une petite intro css3 toute jolie !
+ 
+ Inspiré de http://www.bitpublimedia.ro/themeforest/resume/
+ 
+ Follow me @FGRibreau !
+ 
+ All Right Reserved.
+*/
+
+
+@font-face {
+  font-family: 'Cabin Sketch';
+  font-style: normal;
+  font-weight: bold;
+  src: local('CabinSketch Bold'), local('CabinSketch-Bold'), url('http://themes.googleusercontent.com/font?kit=ki3SSN5HMOO0-IOLOj069BAPw1J91axKNXP_-QX9CC8') format('woff');
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: italic;
+  font-weight: 100;
+  src: local('Josefin Sans Thin Italic'), local('JosefinSans-ThinItalic'), url('http://themes.googleusercontent.com/font?kit=s7-P1gqRNRNn-YWdOYnAOUU4uDXlcIT8_0bdRGwoYww') format('woff');
+}
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Josefin Sans Italic'), local('JosefinSans-Italic'), url('http://themes.googleusercontent.com/font?kit=q9w3H4aeBxj0hZ8Osfi3d752ooqJRs02xO3mONBoqeI') format('woff');
+}
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Josefin Sans'), local('JosefinSans'), url('http://themes.googleusercontent.com/font?kit=xgzbb53t8j-Mo-vYa23n5qRDOzjiPcYnFooOUGCOsRk') format('woff');
+}
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Josefin Sans Light Italic'), local('JosefinSans-LightItalic'), url('http://themes.googleusercontent.com/font?kit=ppse0J9fKSaoxCIIJb33G6G6KSkCb3wBFlS6Qx4Mm8U') format('woff');
+}
+
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+border: 0;
+outline: 0;
+font-weight: inherit;
+font-style: inherit;
+font-size: 100%;
+font-family: inherit;
+vertical-align: baseline;
+margin: 0;
+padding: 0;
+}
+
+/* -------- Body -------------------------- */
+body {
+  background: white;
+  background-color: #222;
+  color: #333;
+  font: 12px Arial, Helvetica, sans-serif;
+  line-height: 22px;
+}
+
+/* Un peu de rangement pour commencer */ 
+
+
+#cv #col_1 .top,
+/* Cacher le width identity (âge, etc...) */
+.widget_identity,
+/* Cacher les liens vers les adresses email */
+#col_1  .widget_contact .info,
+#col_1  .widget_contact .info-title,
+/* Cacher le titres (des liens vers réseaux sociaux)*/
+#cv #col_1 .widget_userlink h3, 
+
+/* Cacher "Ma situation pro" (entrepreneur) */
+.widget_availability h3,
+
+/* Pas besoin du titre de la partie "biographie" */
+.widget_biography h3
+{display:none;}
+
+
+/* ------- CV ----------------------------- */
+#cv {
+  width: 780px;
+  background-color: white;
+  border-bottom: 15px solid #50A3D9;
+  border-top: 15px solid #50A3D9;
+  margin: 66px auto 0;
+  padding:0;
+}
+
+#cv #cv_bloc {
+  width: 100%;
+}
+/* ------- Banner ------------------------ */
+#cv #banner {
+  background-color: #F8F8F8;
+  margin: 0;
+  padding: 0px 40px 30px 40px;
+  border-bottom: 1px solid #DFDFDF;
+  display: block;
+  min-height: 1%;
+  height: 150px;
+}
+  
+  #cv #banner a {
+    display: inline-block;
+    margin-top: 50px;
+    width: 500px;
+    clear:right;
+    height:auto;
+    
+    margin-left: 110px;
+    opacity:1;
+  }
+  
+  #cv #banner a span{
+    display:inline-block;
+    width:100%;
+    color:#ffffff;
+    height:auto;
+    color: #222;
+  }
+  
+  #cv #banner a span#banner_user_name{
+    width: 500px;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: -0.09em;
+    margin-left: 130px;
+    font-family:'Cabin Sketch', arial, serif;
+  }
+  
+    #cv #banner a span#banner_cv_title::before{
+      margin-right: 30px;
+      border: 1px solid #DEDEDE;
+      /*padding: 10px;*/
+      display:inline-block;
+      height:100px;
+      width:100px;
+      margin-top:-60px;
+      background:#ffffff url('http://www.doyoubuzz.com/var/users/288/avatar/287/avatar_cp.jpg?rd=15') no-repeat 50% 50%;
+      content:' ';
+      float:left;
+    }
+    
+    #cv #banner a span#banner_cv_title{
+      color: #475261;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0px;
+    }
+    
+    #cv #banner a::after{
+      
+    }
+    
+    #cv #col_1 .bloc.widget_userlink,
+    #cv #col_1 .bloc.widget_contact,
+    #cv #col_1 .bloc.widget_availability{
+      position:absolute;
+      right: 0px;
+      height: auto;
+      padding: 0px;
+      top: -60px;
+    }
+    
+    #cv #col_1 .bloc.widget_userlink{
+      right:38px;
+    }
+    
+      
+      .widget_userlink.widget_view .userlink{
+        overflow: visible;
+        padding: 0;
+        margin: 0 0 0 6px;
+        display: inline-block;
+        height: 32px;
+        width: 32px;
+        background:none;
+      }
+      
+      .widget_userlink.widget_view .userlink a,
+      #col_1 .widget_contact .form-contact-link{
+        height: 32px; 
+        width:32px;
+        background: url(http://fgribreau.com/img/iconsprite2.png) no-repeat top left;
+        display:block;
+        padding: 0;
+        margin:0;
+        display:block !important;
+      }
+      
+      .widget_userlink.widget_view .userlink a,
+      #col_1 .widget_contact .form-contact-link{
+        text-indent:-9000px;
+        opacity:0.5;
+        transition:opacity 500ms ease;
+        -webkit-transition:opacity 500ms ease;
+        -moz-transition:opacity 500ms ease;
+      }
+      
+      .widget_userlink.widget_view .userlink a:hover,
+      #col_1 .widget_contact .form-contact-link:hover{
+        opacity:1;
+        transition:opacity 100ms ease;
+        -webkit-transition:opacity 100ms ease;
+        -moz-transition:opacity 100ms ease;
+      }
+      
+      /* Liste des icônes en haut à droite */
+      .widget_userlink.widget_view .userlink.autre a{background-position: 0 -1414px;}
+      .widget_userlink.widget_view .userlink.linked_in a{background-position: 0 -1118px;}
+      .widget_userlink.widget_view .userlink.twitter a{background-position: 0 -1726px;}
+      .widget_userlink.widget_view .userlink.mon_blog a{background-position: 0 -66px;}
+      #col_1 .widget_contact .form-contact-link{background-position: 0 -444px;}
+      
+        
+        #col_1 .widget_contact ul li:last-child{
+          margin-top:0px !important;
+        }
+        
+          
+        
+      /* Afficher ma disponibilité dans le header à droite */
+      #cv #col_1 .bloc.widget_availability {
+        top: -60px;
+        left: 0px;
+        right: auto;
+        background: white;
+        padding: 1px 10px;
+        border-radius: 4px;
+        box-shadow: inset 2px 3px 7px #DFDFDF;
+        cursor:default;
+      }
+/* ------- Menu -------------------------- */
+
+  /* Polices du menu + de télécharger/partager */
+  #cv #menu span,
+  #downloadcv span,
+  #sharecv a{
+    font:normal normal 12px Arial;
+    color:#333;
+  }
+  
+#cv #menu {
+  height: 22px;
+  padding: 0px;
+  margin: 0px;
+  position: absolute;
+  top: 156px;
+}
+
+#cv #menu li{
+
+}
+#cv #menu a {
+  height:22px;
+  padding:0px 0px 0px 15px;
+  margin-right:1px;
+}
+#cv #menu span {
+  height:19px;
+  padding:4px 15px 0px 0px;
+  background-repeat:no-repeat;
+}
+
+#cv #menu li.on a:hover,
+#cv #menu li.off a:hover,
+#downloadcv:hover,
+#sharecv:hover{
+    border-bottom:1px solid #333;
+}
+
+#cv #menu li.on a span{
+  font-weight:bold;
+}
+
+
+/* ------- Content ----------------------- */
+#cv #content {
+  padding:20px 20px 0px 20px;
+  background:#ffffff;
+}
+
+/* ------- Biographie ------------------------- */
+#cv #col_1 {
+  margin-top: 0px;
+  /*position: absolute;*/
+  left: -300px;
+  float:none;
+}
+
+
+#cv #col_1 .middle {
+  width: 100%;
+  margin: 20px 0 30px 0;
+  padding-bottom:30px;
+}
+  
+  .widget_biography{
+    position:relative;
+    
+  }
+  
+  .widget_biography .summary{
+    margin: 0px 40px;
+    text-align: justify;
+    font-family: 'Josefin Sans';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 21px;
+    word-wrap: break-word;
+    line-height: 24px;
+    z-index:1;
+  }
+  
+  .widget_biography .summary:after,
+  .widget_biography .summary:before{
+    position:absolute;
+    font-size:50px;
+    z-index:0;
+    font-family:'serif';
+    color:#475261;
+  }
+  
+  .widget_biography .summary:before{
+    content:'\201C';
+    left:0px;
+    bottom:-10px;
+  }
+  
+  .widget_biography .summary:after{
+    content:'\201D';
+    right:0px;
+    top:10px;
+  }
+
+
+/* -----------cv_options------------------ */
+#cv_options {
+  right: 7px;
+  top: 150px;
+  width:auto;
+  z-index: 10;
+}
+
+/* ------- CV -------------------- */
+#cv #components {
+  padding-left:20px;
+}
+#cv #components .middle {
+  background:transparent;
+  width:711px;
+}
+#cv #components #col-resize,
+  #cv #components #col-sep {
+  width:20px;
+}
+#cv #components #col-2 {
+  width:59.1%;
+}
+#cv #components #col-3,
+  #cv #components #col-4 {
+  width:38%;
+}
+
+
+
+
+
+
+
+/* ------- Portlet ----------------------- */
+#cv .portlet {
+  margin-bottom:15px;
+  background:#ffffff;
+  /*border-bottom:1px solid #cccccc;
+  border-right:1px solid #cccccc;
+  */
+  margin-top:30px;
+  margin-bottom:60px;
+}
+* html #cv .portlet {
+  border:1px solid #cccccc;
+}
+#cv .portlet h2 {
+  padding-bottom:11px;
+  position:absolute;
+  top: -40px;
+  left:0px;
+  width:100%;
+}
+#cv .portlet h2 a,
+#cv .portlet h2 a:hover {
+  font: normal normal normal 32px 'Cabin Sketch', arial, serif;
+  color: #222;
+  height: auto;
+  text-align: center;
+}
+#cv .portlet .more{
+  border-bottom:1px solid #dbdbdb;
+  margin-left:10px;
+  height:18px;
+  margin-bottom:10px;
+  margin-top:5px;
+}
+#cv .portlet .last .more{
+  border-bottom:none;
+  height:21px;
+}
+#cv .portlet .more a,
+  #cv .portlet .more a:hover{
+  height:17px;
+  background-repeat:no-repeat;
+  background-position:right top;
+  color:#C1C1C1;
+  font-size:11px;
+  padding:2px 6px 0px 0px;
+  width:142px;
+}
+/* ------- Widget ------------------------ */
+#cv .widget .colored,
+  #cv .widget .colored a,
+  #cv .widget .colored a:hover {
+  font-weight:normal;
+  font-size:15px;
+  color: #50A3D9;
+}
+#cv .widget h3 a,
+  #cv .widget h3 a:hover,
+  #cv .widget h4 a,
+  #cv .widget h4 a:hover {
+  color: #515253;
+}
+#cv .widget h5 a,
+  #cv .widget h5 a:hover {
+  color:grey;
+}
+#cv .widget li {
+  list-style: disc outside;
+  color:#000000;
+  padding-left:10px;
+}
+#cv .widget li a,
+  #cv .widget li a:hover,
+  #cv a.alink,
+  #cv a:hover.alink{
+  color:#50a3d9;
+  text-decoration:underline;
+  font-size:11px;
+}
+#cv .widget .underlined {
+  background:#ededed;
+  margin-top:2px;
+}
+#cv .widget-middle {
+  background: none;
+  border: none;
+}
+#cv .widget_jobs h4,
+  #cv .widget h5{
+  padding-left: 13px;
+  margin-bottom:3px;
+}
+
+#cv .widget_jobs ul,
+  #cv .widget ul{
+  padding-left:13px;
+}
+/* ------- Widget level 2 ---------------- */
+#cv .level2 .widget_jobs h4 {
+  padding-left: 17px;
+}
+#cv .level2 .widget{
+  border-bottom:1px dotted #cccccc;
+  margin-bottom:10px;
+  padding-bottom:10px;
+}
+#cv .level2 .widget .image {
+  border:none;
+  margin-top:7px;
+}
+#cv .level2 .widget ul {
+  padding-left:20px;
+}
+#cv .level2 .widget_trainings h5 {
+  padding-left: 20px;
+}
+#cv .level2.blog .underlined{
+  padding-left:20px;
+}
+
+
+/* ------- Footer ------------------------ */
+#cv #footer {
+  display:none;
+  content:'DoYouBuzz Powered';
+}
+/*-----------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+--------------- EDIT (edition du CV, utilisateur loggé) -----------------------
+-------------------------------------------------------------------------------
+-----------------------------------------------------------------------------*/
+
+/* ------- Widget ---------- */
+#cv .portlet a.add {
+  font:normal normal normal 10px Arial;
+  right:-10px;
+  top:-25px;
+  z-index:3;
+  color:#888787;
+}
+
+#cv form.edit,
+#col_1 form.widget-middle{
+  padding-bottom:10px;
+  background: white;
+  z-index:2000;
+  border-radius:5px;
+  box-shadow: inset 0px 0px 3px #222;
+  padding:5px;
+}
+
+.widget_availability form .avaibility_wrapper{
+  background-color:transparent;
+  border:0px;
+}
+
+.options{
+  left: -32px;
+}
+
+#col_1 .widget_availability .options{
+  left: -32px;
+  top: 3px;
+}
+
+#col_1 .widget_userlink .options,
+#col_1 .widget_contact .options{
+  left: -32px;
+  top: -7px;
+  border-radius: 4px;
+  padding:0px 0px 4px 4px;
+  background-color:#ffffff;
+}
+
+  #col_1 .widget_userlink .options > div,
+  #col_1 .widget_contact .options > div{display:none;}
+
+  #col_1 .widget_contact .options{
+      left:auto;
+      right:-36px;
+  }
+/*
+#col_1 .widget_contact .options{
+  left: -26px;
+  top: -6px;
+  border-radius: 4px;
+  
+  display:block !important;
+}*/
+
+/* ------------------------- Enjoy !!! ------------------------------------- */
+
+
+
+/* Si support des animations css3, on s'amuse un peu */
+
+/* Animation du header (photo + nom + fonction) */
+@-webkit-keyframes showHeader{
+		0% {
+		  margin-left: 0px;
+      opacity:0;
+		} 
+		
+		100% {
+		  margin-left: 110px;
+      opacity:1;
+		}
+}
+
+#cv #banner a{
+  -webkit-animation: showHeader 1s ease-out 100ms 1;
+}
+
+
+
+/* Ensuite afficher les icones & availability */
+@-webkit-keyframes showAvailability{
+		0% {
+		  display:none;
+		  top:0px;
+		  z-index:-5;
+		} 
+		
+		
+		50% {
+		  /* Début de l'animation */
+		  display:block;
+		  top: 0px;
+		  opacity:0;
+		  z-index:-5;
+		}
+		
+		99% {
+		  top: -59px;
+		  opacity:1;
+		}
+		
+		100%{
+		  top: -60px;
+		  z-index:1;
+		}
+}
+
+#cv #col_1 .bloc.widget_userlink,
+#cv #col_1 .bloc.widget_contact,
+#cv #col_1 .bloc.widget_availability{
+  -webkit-animation: showAvailability 2s ease 0s 1;
+}
+
+/* Ensuite afficher le menu */
+@-webkit-keyframes showMenu{
+		0% {
+		  color:#F8F8F8;
+		} 
+		
+		50% {
+		  
+		}
+		
+		75%{
+		  color:#F8F8F8;
+		}
+		
+		100% {
+		  color:#333;
+		}
+}
+
+#cv #menu span {
+  -webkit-animation: showMenu 3s ease 0s 1;
+}
+
+/* Et en même temps les options (dl + share) */
+@-webkit-keyframes showOptions{
+		0% {
+		  opacity:0;
+		} 
+		
+		50% {
+		  
+		}
+		
+		75%{
+		  opacity:0;
+		}
+		
+		100% {
+		  opacity:1;
+		}
+}
+
+#cv #cv_options  {
+  -webkit-animation: showOptions 3s ease 0s 1;
+}
+
+/* Ensuite la biography */
+@-webkit-keyframes showBiography{
+		0% {
+		  opacity:0;
+		} 
+		
+		50% {
+		  
+		}
+		
+		75%{
+		  opacity:0;
+		}
+		
+		100% {
+		  opacity:1;
+		}
+}
+
+#cv .widget_biography {
+  -webkit-animation: showBiography 4s ease 0s 1;
+}
+
+/* Et enfin le reste de la page */
+@-webkit-keyframes thisIstheEndBaby{
+		0% {
+		  opacity:0;
+		} 
+		
+		50% {
+		  
+		}
+		
+		75%{
+		  opacity:0;
+		}
+		
+		100% {
+		  opacity:1;
+		}
+}
+
+#cv #components {
+  -webkit-animation: thisIstheEndBaby 5s ease 0s 1;
+}
