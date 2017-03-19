@@ -2,7 +2,24 @@
 
 .post.hentry{
   position:relative;
+
+  blockquote{
+    border-left: 3px solid rgba(0,0,0,.8);
+    padding-left: 20px;
+    margin-left: -23px;
+    margin-top: 29px;
+    padding-bottom: 2px;
+    letter-spacing: .01rem;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 21px;
+    line-height: 1.58;
+    letter-spacing: -.003em;
+    font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
+  }
 }
+
+
 
 .date-header{
   /* extracted from p */
