@@ -1,13 +1,13 @@
 {
   "name": "fgribreau.com",
   "private": true,
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Landing page of fgribreau.com",
   "scripts": {
     "start-dev": "gulp serve",
     "postinstall": "npm run build",
     "build": "gulp default",
-    "prepublish":"echo 'building website' && npm run build && (cd blog && npm run build)",
+    "prepublish": "echo 'building website' && npm run build && (cd blog && npm run build)",
     "deploy": "npm-release patch",
     "postversion": "npm run --silent gh-pages",
     "gh-pages": "gh-pages -d dist -b master --message $npm_package_version",
