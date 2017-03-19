@@ -7,7 +7,7 @@
     "start-dev": "gulp serve",
     "postinstall": "npm run build",
     "build": "gulp default",
-    "preversion": "echo 'building website' && npm run build && (cd blog && npm run build)",
+    "preversion": "echo 'building website' && npm run build && (cd blog && sh -c 'npm run build')",
     "deploy": "npm-release patch",
     "postversion": "npm run --silent gh-pages",
     "gh-pages": "gh-pages -d dist -b master --message $npm_package_version",
