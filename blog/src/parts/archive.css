@@ -1,0 +1,37 @@
+.BlogArchive .widget-content{
+  margin-top:16px;
+}
+
+#ArchiveList ul {
+  list-style: none;
+  margin: 0 0 0;
+  padding: 0 0 0;
+}
+
+#ArchiveList li {
+  margin: 0;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: .25em;
+  padding-left: 15px;
+  text-indent: -10px;
+  line-height: 1.5em;
+  font-size: 14px;
+}
+
+#ArchiveList ul > li:before{
+  display:none;
+}
+
+#ArchiveList a {
+  background: none;
+  font-size: 14px;
+}
+
+#ArchiveList .widget {
+  margin: 0px 0px 20px 0px;
+}
+
+#ArchiveList .widget-content {
+  margin: 10px 0px 20px 0px;
+}

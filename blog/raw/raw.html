@@ -1,0 +1,2371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0026)http://blog.fgribreau.com/ -->
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:b="http://www.google.com/2005/gml/b" xmlns:data="http://www.google.com/2005/gml/data" xmlns:expr="http://www.google.com/2005/gml/expr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Francois Guillaume Ribreau | Javascript, startup ideas and action.</title>
+<meta content="Francois-Guillaume Ribreau&#39;s Blog - " name="description">
+<link href="http://feeds2.feedburner.com/geekfg" rel="alternate" title="RSS 2.0" type="application/rss+xml">
+<link href="http://www.openidfrance.fr/index.php" rel="openid.server">
+<link href="http://www.openidfrance.fr/geekfg" rel="openid.delegate">
+<!-- <link href="../stylev3.css" media="screen" rel="stylesheet" type="text/css"> -->
+<link href="../dist/style.css" media="screen" rel="stylesheet" type="text/css">
+<div id="outer-wrapper">
+
+<div id="menu_tabLabs">
+<ul>
+<li>
+<span class="mlr">Francois-Guillaume Ribreau</span>
+</li>
+<li>
+<a class="mll" href="http://blog.fgribreau.com/" rel="dofollow" title="Go home">blog</a>
+</li>
+</ul>
+<ul class="menl">
+<li>
+<a class="mlr" href="http://iadvize.com/" rel="nofollow" title="">
+        iAdvize Lead Dev
+        </a>
+</li>
+<li>
+<span class="mlc">&amp;&amp;</span>
+</li>
+<li>
+<a class="mlc" href="http://redsmin.com/" rel="blog dofollow" title="Redsmin - a developer oriented, online real-time administration and visualization service for Redis.">
+        Redsmin Founder
+        </a>
+</li>
+<li>
+<span class="mlc">&amp;&amp;</span>
+</li>
+<li>
+<a class="mll menllast" href="https://www.linkedin.com/profile/view?id=16667622" rel="dofollow" title="Francois-Guillaume Ribreau LinkedIn profile">
+        Professor
+        </a>
+</li>
+</ul>
+</div>
+
+<div id="wrap2">
+<!-- skip links for text browsers -->
+<span id="skiplinks" style="display:none;">
+<a href="http://blog.fgribreau.com/#main">skip to main </a> |
+      <a href="http://blog.fgribreau.com/#sidebar">skip to sidebar</a>
+</span>
+<div id="header-wrapper">
+<!--No header image -->
+<h1 class="title">
+<!-- <a href="http://blog.fgribreau.com/">Francois-Guillaume Ribreau's Dev Blog</a> -->
+<a href="http://blog.fgribreau.com/">Francois-Guillaume Ribreau's blog</a>
+</h1>
+<div class="descriptionwrapper">
+  <a href="http://fgribreau.com/">Full-stack CTO &amp; Architect</a>
+  -
+  <a href="http://fgribreau.com/">Tech Consultant &amp; Advisor</a>
+  -
+  <a href="http://fgribreau.com/">Passionate Teacher</a>
+
+<!-- <a href="mailto:contact.site@fgribreau.com" title="Contact me !">
+<img alt="Contact" src="./Francois Guillaume Ribreau _ Javascript, startup ideas and action._files/email.png">
+</a>
+<a href="http://feeds2.feedburner.com/geekfg" rel="nofollow" title="Suscribe">
+<img alt="Rss" src="./Francois Guillaume Ribreau _ Javascript, startup ideas and action._files/rss.png">
+</a>
+<a href="http://www.linkedin.com/in/francoisguillaumeribreau" rel="nofollow" title="Add me !">
+<img alt="LinkedIn" src="./Francois Guillaume Ribreau _ Javascript, startup ideas and action._files/linkedin.png">
+</a>
+<a href="http://github.com/FGRibreau/" rel="nofollow" title="Fork me on GitHub !">
+<img alt="GitHub" src="./Francois Guillaume Ribreau _ Javascript, startup ideas and action._files/github.png">
+</a> -->
+
+</div>
+<!-- <div class='descriptionwrapper'> <p class='description'><span><data:description/></span></p> </div>-->
+</div>
+<div id="content-wrapper">
+<div id="crosscol-wrapper" style="text-align:center">
+<div class="crosscol no-items section" id="crosscol"></div>
+</div>
+<div id="main-wrapper">
+<div id="avatarme">
+</div>
+<div class="main section" id="main"><div class="widget Blog" data-version="1" id="Blog1">
+<div class="blog-posts hfeed">
+<div class="post hentry">
+<span class="item-control blog-admin pid-1151293872">
+<img alt="" class="icon-action" height="18" src="./Francois Guillaume Ribreau _ Javascript, startup ideas and action._files/icon18_edit_allbkg.gif" width="18">
+</a>
+</span>
+<span class="date-header">
+3/08/2017
+</span>
+<a name="8297190713517393639"></a>
+<h1 class="post-title entry-title">
+<a href="http://blog.fgribreau.com/2017/03/how-to-issue-and-renew-lets-encrypt.html">How to issue and renew Let's Encrypt certificates with OVH DNS API</a>
+</h1>
+<div class="author" style="overflow:hidden;height:1px;width:1px">
+<a href="http://blog.fgribreau.com/2004/08/slt-tt-le-monde.html" rel="author" style="margin-left:200px;display:block">Francois-Guillaume Ribreau
+        </a>
+</div>
+<div class="post-header-line-1"></div>
+<div class="post-body entry-content">
+<h3>Acme.sh</h3>
+
+<p>First thing first, download and install <a href="https://github.com/Neilpang/acme.sh" target="_blank">acme.sh</a>.</p>
+<br>
+<h3>Create OVH Application</h3>
+
+<p>Open <a href="https://eu.api.ovh.com/createApp/" target="_blank">https://eu.api.ovh.com/createApp/</a>.</p>
+<br>
+<h3>How to issue a Let's Encrypt free SSL certificate</h3>
+
+<code><pre># application key
+export OVH_AK="APPLICATION_KEY"
+# application secret
+export OVH_AS="APPLICATION_SECRET"
+
+acme.sh --issue -d mydomain.net -d sub1.mydomain.net -d sub2.mydomain.net --dns dns_ovh
+</pre></code>
+
+<p>If you run this command for the first time you will have to authenticate.</p>
+<br>
+<h3>How to renew a Let's Encrypt free SSL certificate</h3>
+
+<code><pre># application key
+export OVH_AK="APPLICATION_KEY"
+# application secret
+export OVH_AS="APPLICATION_SECRET"
+
+acme.sh --renew -d mydomain.net -d sub1.mydomain.net -d sub2.mydomain.net --dns dns_ovh
+</pre></code>
+
+<br>
+<h3>What to do in case of INVALID_CREDENTIALS or invalid domain error</h3>
+
+<p>If you have this error: </p>
+
+<code><pre>[Wed Mar  8 12:28:08 CET 2017] invalid domain
+[Wed Mar  8 12:28:08 CET 2017] Error add txt for domain:_acme-challenge.mydomain.net
+</pre></code>
+
+<p>Or this error:</p>
+
+<code><pre>[Wed Mar  8 12:28:08 CET 2017] INVALID_CREDENTIALS
+</pre></code>
+
+<p>I had these issues because I manage multiple domains over multiple OVH account and acme.sh currently does not handle this.</p>
+
+<p>To resolve these issues, edit and remove everything related to the OVH API (OVH_AK and OVH_AS) in the file below:</p>
+
+<code><pre>nano ~/.acme.sh/account.conf
+</pre></code>
+<br>
+<h3>Other issues</h3>
+
+<p>Try to <a href="https://github.com/Neilpang/acme.sh/wiki/How-to-use-OVH-domain-api">follow the guide</a>.</p>
+<div style="clear: both;"></div>
+</div>
+<div class="post-footer">
+<span class="post-comment-link">
+<a class="comment-link" href="http://blog.fgribreau.com/2017/03/how-to-issue-and-renew-lets-encrypt.html">Comments</a>
+</span>
+</div>
+</div>
+<div class="inline-ad">
+
+<!-- geekfg_main_Blog1_1x1_as -->
+<div class="post hentry">
+<span class="item-control blog-admin pid-1151293872">
+<img alt="" class="icon-action" height="18" src="./Francois Guillaume Ribreau _ Javascript, startup ideas and action._files/icon18_edit_allbkg.gif" width="18">
+</a>
+</span>
+<span class="date-header">
+1/30/2017
+</span>
+<a name="2989235292157107659"></a>
+<h1 class="post-title entry-title">
+<a href="http://blog.fgribreau.com/2017/01/how-we-reduced-by-37-our-nodejs-project.html">How we reduced by 37% our NodeJS project build time with one line</a>
+</h1>
+<div class="author" style="overflow:hidden;height:1px;width:1px">
+<a href="http://blog.fgribreau.com/2004/08/slt-tt-le-monde.html" rel="author" style="margin-left:200px;display:block">Francois-Guillaume Ribreau
+        </a>
+</div>
+<div class="post-header-line-1"></div>
+<div class="post-body entry-content">
+<p>For <a href="https://image-charts.com/">Image-Charts</a>, <a href="https://redsmin.com/">Redsmin</a> and the-to-be-announced-next-SaaS I use Jenkins as the continuous integration system. Lately I discovered that 75% of Image-Charts project build time was related to the dependencies installation part.<br>
+I don't like and do not advise to enable caching at the build level <strong>because it inherently breaks the principle of repeatable and independent builds</strong> thus for every project I work on each build starts with a clean empty cache.</p>
+<p>So I wondered how long Image-Charts build would take if we were to replace npm with <a href="https://yarnpkg.com/">yarn</a> for the dependencies installation part.</p>
+<br>
+<script src="./Francois Guillaume Ribreau _ Javascript, startup ideas and action._files/06dd480e4095274bd77a34da80cf4a49.js"></script>
+<link rel="stylesheet" href="./Francois Guillaume Ribreau _ Javascript, startup ideas and action._files/gist-embed-015b3ab11258edf9a1cf2cff15bb9b710b6450113d46509416be441ba319218a.css"><div id="gist44308153" class="gist">
+    <div class="gist-file">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-build-sh" class="file">
+
+
+  <div itemprop="text" class="blob-wrapper data type-shell">
+      <table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tbody><tr>
+        <td id="file-build-sh-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-build-sh-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-k">time</span> docker run --rm -v <span class="pl-s"><span class="pl-pds">$(</span>pwd<span class="pl-pds">)</span></span>:/src mkenney/npm npm install</td>
+      </tr>
+      <tr>
+        <td id="file-build-sh-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-build-sh-LC2" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-build-sh-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-build-sh-LC3" class="blob-code blob-code-inner js-file-line">12:04:14 real	3m33.500s</td>
+      </tr>
+      <tr>
+        <td id="file-build-sh-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-build-sh-LC4" class="blob-code blob-code-inner js-file-line">12:04:14 user	0m0.780s</td>
+      </tr>
+      <tr>
+        <td id="file-build-sh-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-build-sh-LC5" class="blob-code blob-code-inner js-file-line">12:04:14 sys	0m0.716s</td>
+      </tr>
+      <tr>
+        <td id="file-build-sh-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-build-sh-LC6" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-build-sh-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-build-sh-LC7" class="blob-code blob-code-inner js-file-line"><span class="pl-k">time</span> docker run --rm -v <span class="pl-s"><span class="pl-pds">$(</span>pwd<span class="pl-pds">)</span></span>:/workspace kkarczmarczyk/node-yarn yarn install</td>
+      </tr>
+      <tr>
+        <td id="file-build-sh-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-build-sh-LC8" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-build-sh-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-build-sh-LC9" class="blob-code blob-code-inner js-file-line">12:07:29 real	2m0.769s</td>
+      </tr>
+      <tr>
+        <td id="file-build-sh-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-build-sh-LC10" class="blob-code blob-code-inner js-file-line">12:07:29 user	0m0.164s</td>
+      </tr>
+      <tr>
+        <td id="file-build-sh-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-build-sh-LC11" class="blob-code blob-code-inner js-file-line">12:07:29 sys	0m0.032s</td>
+      </tr>
+</tbody></table>
+
+  </div>
+
+  </div>
+
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/FGRibreau/06dd480e4095274bd77a34da80cf4a49/raw/385d3e394bcce57b0a75e33f6e9e8f72628ceb81/build.sh" style="float:right">view raw</a>
+        <a href="https://gist.github.com/FGRibreau/06dd480e4095274bd77a34da80cf4a49#file-build-sh">build.sh</a>
+        hosted with ❤ by <a href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+</div>
+
+<br>
+<p>For a medium-sized project like Image-Charts (39 dependencies and 9 dev-dependencies and some native dependencies) switching the installation step to yarn reduced the build time by up to 37% which is really awesome! The next pain point to improve would be a switch from mocha to <a href="https://github.com/avajs/ava">ava</a> in order to leverage parallel tests execution but that's another story!</p>
+<div style="clear: both;"></div>
+</div>
+<div class="post-footer">
+<span class="post-comment-link">
+<a class="comment-link" href="http://blog.fgribreau.com/2017/01/how-we-reduced-by-37-our-nodejs-project.html">Comments</a>
+</span>
+</div>
+</div>
+<div class="inline-ad">
+<!-- geekfg_main_Blog1_1x1_as -->
+</div>
+</div>
+<div class="blog-pager post-bottom">
+<a class="blog-pager-older-link" href="http://blog.fgribreau.com/search?updated-max=2017-01-30T12:42:00%2B01:00" title="Articles plus anciens"><span>»</span></a>
+</div>
+<div class="clear"></div>
+</div></div>
+</div><!-- /main-wrapper -->
+<div class="clear">&nbsp;</div>
+</div>
+<div class="clear">&nbsp;</div>
+<div id="footer-wrapper">
+<div id="footer-left">
+<div class="footer section" id="footer-l"><div class="widget BlogArchive" data-version="1" id="BlogArchive1">
+<h2>Blog Archive</h2>
+<div class="widget-content">
+<div id="ArchiveList">
+<div id="BlogArchive1_ArchiveList">
+<ul>
+<li class="archivedate expanded">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy toggle-open">▼&nbsp;</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/search?updated-min=2017-01-01T00:00:00%2B01:00&amp;updated-max=2018-01-01T00:00:00%2B01:00&amp;max-results=4">2017</a>
+<span class="post-count" dir="ltr">(4)</span>
+<ul>
+<li class="archivedate expanded">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy toggle-open">▼&nbsp;</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2017_03_01_archive.html">mars</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="posts">
+<li><a href="http://blog.fgribreau.com/2017/03/how-to-issue-and-renew-lets-encrypt.html">How to issue and renew Let's Encrypt certificates ...</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2017_01_01_archive.html">janvier</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/search?updated-min=2016-01-01T00:00:00%2B01:00&amp;updated-max=2017-01-01T00:00:00%2B01:00&amp;max-results=9">2016</a>
+<span class="post-count" dir="ltr">(9)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2016_11_01_archive.html">novembre</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2016_10_01_archive.html">octobre</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2016_06_01_archive.html">juin</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2016_05_01_archive.html">mai</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2016_04_01_archive.html">avril</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2016_02_01_archive.html">février</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/search?updated-min=2015-01-01T00:00:00%2B01:00&amp;updated-max=2016-01-01T00:00:00%2B01:00&amp;max-results=14">2015</a>
+<span class="post-count" dir="ltr">(14)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2015_12_01_archive.html">décembre</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2015_11_01_archive.html">novembre</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2015_10_01_archive.html">octobre</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2015_08_01_archive.html">août</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2015_05_01_archive.html">mai</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2015_04_01_archive.html">avril</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2015_03_01_archive.html">mars</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2015_02_01_archive.html">février</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2015_01_01_archive.html">janvier</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/search?updated-min=2014-01-01T00:00:00%2B01:00&amp;updated-max=2015-01-01T00:00:00%2B01:00&amp;max-results=11">2014</a>
+<span class="post-count" dir="ltr">(11)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2014_10_01_archive.html">octobre</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2014_09_01_archive.html">septembre</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2014_08_01_archive.html">août</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2014_07_01_archive.html">juillet</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2014_06_01_archive.html">juin</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2014_05_01_archive.html">mai</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2014_03_01_archive.html">mars</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2014_02_01_archive.html">février</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2014_01_01_archive.html">janvier</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/search?updated-min=2013-01-01T00:00:00%2B01:00&amp;updated-max=2014-01-01T00:00:00%2B01:00&amp;max-results=13">2013</a>
+<span class="post-count" dir="ltr">(13)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2013_12_01_archive.html">décembre</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2013_11_01_archive.html">novembre</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2013_10_01_archive.html">octobre</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2013_09_01_archive.html">septembre</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2013_07_01_archive.html">juillet</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/search?updated-min=2012-01-01T00:00:00%2B01:00&amp;updated-max=2013-01-01T00:00:00%2B01:00&amp;max-results=10">2012</a>
+<span class="post-count" dir="ltr">(10)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2012_09_01_archive.html">septembre</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2012_08_01_archive.html">août</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2012_06_01_archive.html">juin</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2012_05_01_archive.html">mai</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2012_04_01_archive.html">avril</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2012_03_01_archive.html">mars</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2012_02_01_archive.html">février</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2012_01_01_archive.html">janvier</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/search?updated-min=2011-01-01T00:00:00%2B01:00&amp;updated-max=2012-01-01T00:00:00%2B01:00&amp;max-results=16">2011</a>
+<span class="post-count" dir="ltr">(16)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2011_12_01_archive.html">décembre</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2011_11_01_archive.html">novembre</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2011_07_01_archive.html">juillet</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2011_06_01_archive.html">juin</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2011_05_01_archive.html">mai</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2011_04_01_archive.html">avril</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2011_03_01_archive.html">mars</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2011_02_01_archive.html">février</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2011_01_01_archive.html">janvier</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/search?updated-min=2010-01-01T00:00:00%2B01:00&amp;updated-max=2011-01-01T00:00:00%2B01:00&amp;max-results=15">2010</a>
+<span class="post-count" dir="ltr">(15)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2010_12_01_archive.html">décembre</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2010_11_01_archive.html">novembre</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2010_09_01_archive.html">septembre</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2010_08_01_archive.html">août</a>
+<span class="post-count" dir="ltr">(5)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2010_07_01_archive.html">juillet</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2010_06_01_archive.html">juin</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2010_03_01_archive.html">mars</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2010_01_01_archive.html">janvier</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/search?updated-min=2009-01-01T00:00:00%2B01:00&amp;updated-max=2010-01-01T00:00:00%2B01:00&amp;max-results=19">2009</a>
+<span class="post-count" dir="ltr">(19)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2009_11_01_archive.html">novembre</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2009_10_01_archive.html">octobre</a>
+<span class="post-count" dir="ltr">(5)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2009_09_01_archive.html">septembre</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2009_05_01_archive.html">mai</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2009_03_01_archive.html">mars</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2009_02_01_archive.html">février</a>
+<span class="post-count" dir="ltr">(5)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2009_01_01_archive.html">janvier</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/search?updated-min=2008-01-01T00:00:00%2B01:00&amp;updated-max=2009-01-01T00:00:00%2B01:00&amp;max-results=50">2008</a>
+<span class="post-count" dir="ltr">(60)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2008_12_01_archive.html">décembre</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2008_11_01_archive.html">novembre</a>
+<span class="post-count" dir="ltr">(5)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2008_10_01_archive.html">octobre</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2008_08_01_archive.html">août</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2008_07_01_archive.html">juillet</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2008_06_01_archive.html">juin</a>
+<span class="post-count" dir="ltr">(13)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2008_05_01_archive.html">mai</a>
+<span class="post-count" dir="ltr">(16)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2008_04_01_archive.html">avril</a>
+<span class="post-count" dir="ltr">(13)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2008_02_01_archive.html">février</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/search?updated-min=2007-01-01T00:00:00%2B01:00&amp;updated-max=2008-01-01T00:00:00%2B01:00&amp;max-results=9">2007</a>
+<span class="post-count" dir="ltr">(9)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2007_12_01_archive.html">décembre</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2007_10_01_archive.html">octobre</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2007_08_01_archive.html">août</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2007_07_01_archive.html">juillet</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/search?updated-min=2006-01-01T00:00:00%2B01:00&amp;updated-max=2007-01-01T00:00:00%2B01:00&amp;max-results=6">2006</a>
+<span class="post-count" dir="ltr">(6)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2006_12_01_archive.html">décembre</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2006_10_01_archive.html">octobre</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2006_04_01_archive.html">avril</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2006_03_01_archive.html">mars</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2006_01_01_archive.html">janvier</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/search?updated-min=2005-01-01T00:00:00%2B01:00&amp;updated-max=2006-01-01T00:00:00%2B01:00&amp;max-results=3">2005</a>
+<span class="post-count" dir="ltr">(3)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2005_07_01_archive.html">juillet</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2005_06_01_archive.html">juin</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2005_05_01_archive.html">mai</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/search?updated-min=2004-01-01T00:00:00%2B01:00&amp;updated-max=2005-01-01T00:00:00%2B01:00&amp;max-results=4">2004</a>
+<span class="post-count" dir="ltr">(4)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2004_11_01_archive.html">novembre</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+              ►&nbsp;
+
+</span>
+</a>
+<a class="post-count-link" href="http://blog.fgribreau.com/2004_08_01_archive.html">août</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<img alt="" height="18" src="./Francois Guillaume Ribreau _ Javascript, startup ideas and action._files/icon18_wrench_allbkg.png" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div></div>
+</div>
+<div id="footer-right">
+<div class="footer section" id="footer-r"><div class="widget Label" data-version="1" id="Label1">
+<h2>What we talk about here</h2>
+<div class="tagcloud">
+<a class="tag1" href="http://blog.fgribreau.com/search/label/123People">
+123People
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/1and1">
+1and1
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/access">
+access
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/acme.sh">
+acme.sh
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/ajax">
+ajax
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/algorithme">
+algorithme
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/amqp">
+amqp
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/android">
+android
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/angular">
+angular
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/angularjs">
+angularjs
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/animation">
+animation
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/apache">
+apache
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/apc">
+apc
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/api">
+api
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/apple">
+apple
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/ascii">
+ascii
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/astuce">
+astuce
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/audio">
+audio
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/autoenv">
+autoenv
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/automation">
+automation
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/backup">
+backup
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/basic">
+basic
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/bigdata">
+bigdata
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/bindonce">
+bindonce
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/blog">
+blog
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/blogger">
+blogger
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/book">
+book
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/bookmarklet">
+bookmarklet
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/braindump">
+braindump
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/bringr">
+bringr
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/buzzparadise">
+buzzparadise
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/c%2Fc%2B%2B">
+c/c++
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/c%23">
+c#
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/canvas">
+canvas
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/cargo">
+cargo
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/casio">
+casio
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/cassandra">
+cassandra
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/certificates">
+certificates
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/chrome">
+chrome
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/ciel">
+ciel
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/circleci">
+circleci
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/clevercloud">
+clevercloud
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/cli">
+cli
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/clipboard">
+clipboard
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/comparatif">
+comparatif
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/conference">
+conference
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/cron">
+cron
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/cross-domain">
+cross-domain
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/css">
+css
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/css3">
+css3
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/curl">
+curl
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/debian">
+debian
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/debounce">
+debounce
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/del.icio.us">
+del.icio.us
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/design%20patterns">
+design patterns
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/dev">
+dev
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/dev2day">
+dev2day
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/diaporama">
+diaporama
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/digg">
+digg
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/docker">
+docker
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/dojo">
+dojo
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/domaine">
+domaine
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/domainfinder">
+domainfinder
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/doyoubuzz">
+doyoubuzz
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/dropbox">
+dropbox
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/droplr">
+droplr
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/dry">
+dry
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/dsl">
+dsl
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/ebuzzing">
+ebuzzing
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/ecmascript">
+ecmascript
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/elasticsearch">
+elasticsearch
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/entrepreneurship">
+entrepreneurship
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/entretien">
+entretien
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/epsi">
+epsi
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/excel">
+excel
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/expressjs">
+expressjs
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/extensions">
+extensions
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/feedback">
+feedback
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/feedburner">
+feedburner
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/firebug">
+firebug
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/firefox">
+firefox
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/flickr">
+flickr
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/forever">
+forever
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/foursquare">
+foursquare
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/fp">
+fp
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/freelance">
+freelance
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/functional-programming">
+functional-programming
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/gadget">
+gadget
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/gam3r">
+gam3r
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/gd">
+gd
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/geek">
+geek
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/ginger">
+ginger
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/github">
+github
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/gmail">
+gmail
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/gof">
+gof
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/google">
+google
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/google%20chrome">
+google chrome
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/gron">
+gron
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/growl">
+growl
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/grunt">
+grunt
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/hack">
+hack
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/hackathon">
+hackathon
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/hebergement">
+hebergement
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/htaccess">
+htaccess
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/html5">
+html5
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/http">
+http
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/humantalks">
+humantalks
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/iadvize">
+iadvize
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/iMovie">
+iMovie
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/inception">
+inception
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/influxdb">
+influxdb
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/iPhone">
+iPhone
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/java">
+java
+</a>
+<a class="tag100" href="http://blog.fgribreau.com/search/label/javascript">
+javascript
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/jenkins">
+jenkins
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/jq">
+jq
+</a>
+<a class="tag85" href="http://blog.fgribreau.com/search/label/jquery">
+jquery
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/json">
+json
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/Kuripotxt">
+Kuripotxt
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/language">
+language
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/launch">
+launch
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/let%27s%20encrypt">
+let's encrypt
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/livre">
+livre
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/lua">
+lua
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/mac">
+mac
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/matrix">
+matrix
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/mean">
+mean
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/middleware">
+middleware
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/mixpanel">
+mixpanel
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/mongodb">
+mongodb
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/monit">
+monit
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/monnuage">
+monnuage
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/mootools">
+mootools
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/mvc">
+mvc
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/n-gram">
+n-gram
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/nantes">
+nantes
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/nantestech">
+nantestech
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/netvibes">
+netvibes
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/ng-animate">
+ng-animate
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/nobullshit">
+nobullshit
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/node">
+node
+</a>
+<a class="tag85" href="http://blog.fgribreau.com/search/label/nodejs">
+nodejs
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/nodetool">
+nodetool
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/nosql">
+nosql
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/npm">
+npm
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/nsp">
+nsp
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/nvm">
+nvm
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/opera">
+opera
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/orange">
+orange
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/ovh">
+ovh
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/pack">
+pack
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/packt">
+packt
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/pattern-matching">
+pattern-matching
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/pdo">
+pdo
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/peerguardian">
+peerguardian
+</a>
+<a class="tag85" href="http://blog.fgribreau.com/search/label/php">
+php
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/php%20js">
+php js
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/playframework">
+playframework
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/plazu">
+plazu
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/plugins">
+plugins
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/plurk">
+plurk
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/plurkcounter">
+plurkcounter
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/pm2">
+pm2
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/preg">
+preg
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/preg_replace">
+preg_replace
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/preg_replace_callback">
+preg_replace_callback
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/process">
+process
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/prof">
+prof
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/profiling">
+profiling
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/project">
+project
+</a>
+<a class="tag85" href="http://blog.fgribreau.com/search/label/projet">
+projet
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/projets">
+projets
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/promethee">
+promethee
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/prototype">
+prototype
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/proxmox">
+proxmox
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/quickwin">
+quickwin
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/rabbitmq">
+rabbitmq
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/redis">
+redis
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/redsmin">
+redsmin
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/request">
+request
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/reverse-engineering">
+reverse-engineering
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/review">
+review
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/ria">
+ria
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/rss">
+rss
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/rundeck">
+rundeck
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/rust">
+rust
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/sass">
+sass
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/scala">
+scala
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/scylla">
+scylla
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/security">
+security
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/selector">
+selector
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/sets">
+sets
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/skrollr">
+skrollr
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/slides">
+slides
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/sms">
+sms
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/snippet">
+snippet
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/soa">
+soa
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/social">
+social
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/socket.io">
+socket.io
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/soutenance">
+soutenance
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/spritely">
+spritely
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/spyware">
+spyware
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/sql">
+sql
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/ssh">
+ssh
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/ssl">
+ssl
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/ssl%20certificate">
+ssl certificate
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/stage">
+stage
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/stage2008">
+stage2008
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/startup">
+startup
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/stretchtext">
+stretchtext
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/supervisord">
+supervisord
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/sysdig">
+sysdig
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/systeme">
+systeme
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/talk">
+talk
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/tcpdump">
+tcpdump
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/test">
+test
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/thought">
+thought
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/tool">
+tool
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/tree">
+tree
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/troll">
+troll
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/tv">
+tv
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/twitter">
+twitter
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/vb">
+vb
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/vb.net">
+vb.net
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/vb6">
+vb6
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/vba">
+vba
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/versioning">
+versioning
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/video">
+video
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/vistarc">
+vistarc
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/vistavatar">
+vistavatar
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/web%202.0">
+web 2.0
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/web2day">
+web2day
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/webdav">
+webdav
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/webkit">
+webkit
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/WEBO">
+WEBO
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/websocket">
+websocket
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/widget">
+widget
+</a>
+<a class="tag75" href="http://blog.fgribreau.com/search/label/windows">
+windows
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/windows%20seven">
+windows seven
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/wordpress">
+wordpress
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/xhtml">
+xhtml
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/xml">
+xml
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/xmpp">
+xmpp
+</a>
+<a class="tag65" href="http://blog.fgribreau.com/search/label/xpath">
+xpath
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/xss">
+xss
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/yarn">
+yarn
+</a>
+<a class="tag1" href="http://blog.fgribreau.com/search/label/yui">
+yui
+</a>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<img alt="" height="18" src="./Francois Guillaume Ribreau _ Javascript, startup ideas and action._files/icon18_wrench_allbkg.png" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget Label" data-version="1" id="Label2">
+</div></div>
+</div><!-- /footer-right -->
+</div><!-- /footer-wrapper -->
+</div>
+<!-- end outer-wrapper -->
+</div>
+<div id="copy">
+  Made with <a href="http://www.blogger.com/home" rel="nofollow">❤</a> <strike>on a hot august night</strike> from an airplane the 19th of March 2017.
+</div>

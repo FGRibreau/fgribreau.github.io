@@ -1,0 +1,55 @@
+.tagcloud {
+  font-size:28px;
+  margin:10px 0 20px;
+  text-align:justify;
+  line-height: 0.9;
+}
+
+
+.tagcloud a{
+  display:inline;
+  vertical-align:middle;
+  background: none;
+  -webkit-transition:all 5s ease-out;
+}
+
+
+.tagcloud a.tag100{
+  font-weight:bold;
+  color:rgba(98, 98, 98, 1);
+}
+
+.tagcloud a.tag85{
+  font-size:90%;
+  font-weight:bold;
+  color:rgba(98, 98, 98, 1);
+}
+
+.tagcloud a.tag75{
+  color:rgba(98, 98, 98, 0.8);
+  font-size:75%;
+}
+
+.tagcloud a.tag65{
+  color:rgba(98, 98, 98, 0.7);
+  font-size:36%;
+}
+
+.tagcloud a.tag1{
+  /*color:rgba(98, 98, 98, 0.6);
+  font-size:26%;*/
+  display:none;
+}
+
+.tabcloud:hover{
+}
+
+.tagcloud:hover a{
+  -webkit-transition:color 2s ease-in;
+}
+
+.tagcloud a:hover{
+  color:#333333;
+  -webkit-transition:color 50ms ease-in;
+  text-decoration:none;
+}

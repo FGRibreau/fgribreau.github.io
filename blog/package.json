@@ -1,0 +1,26 @@
+{
+  "name": "blog.fgribreau.com",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Francois-Guillaume Ribreau <npm@fgribreau.com> (http://fgribreau.com/)",
+  "engines": {
+    "node": "6"
+  },
+  "bin": {},
+  "scripts": {
+    "build":"npm run webpack",
+    "start-dev":"python -m SimpleHTTPServer 8080"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "devDependencies": {
+    "css-loader": "^0.27.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "node-sass": "^4.5.0",
+    "sass-loader": "^4.1.0",
+    "style-loader": "^0.13.2",
+    "webpack": "^1.14.0"
+  },
+  "license": "FGRibreau",
+  "description": ""
+}

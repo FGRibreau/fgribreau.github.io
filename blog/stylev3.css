@@ -604,12 +604,12 @@ FOOTER
   #references{text-align:center;}
 
 
-.footer ul {
+#ArchiveList ul {
   list-style: none;
   margin: 0 0 0;
   padding: 0 0 0;
 }
-.footer li {
+#ArchiveList li {
   margin: 0;
   padding-top: 0;
   padding-right: 0;
@@ -618,10 +618,10 @@ FOOTER
   text-indent: -10px;
   line-height: 1.5em;
 }
-.footer .widget {
+#ArchiveList .widget {
   margin: 0px 0px 20px 0px;
 }
-.footer .widget-content {
+#ArchiveList .widget-content {
   margin: 10px 0px 20px 0px;
 }
 #footer-wrapper h2 {
