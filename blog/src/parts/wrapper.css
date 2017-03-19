@@ -1,3 +1,7 @@
+#navbar-iframe-container{
+  display: none!important;
+}
+
 #outer-wrapper{
 
 }
@@ -6,7 +10,7 @@
   display:none;
 }
 
-#content-wrapper{
+#content-wrapper, #footer-wrapper{
   width:700px;
   margin:0 auto;
 }
