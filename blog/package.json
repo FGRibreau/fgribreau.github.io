@@ -8,7 +8,7 @@
   },
   "bin": {},
   "scripts": {
-    "build":"npm run webpack",
+    "build":"webpack",
     "start-dev":"python -m SimpleHTTPServer 8080"
   },
   "main": "index.js",
