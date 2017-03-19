@@ -9,23 +9,23 @@ module.exports = {
   },
   photos: [
     {
-      url: "/img/fgribreau-photo-saint-sebastien.jpg",
+      url: "https://farm4.staticflickr.com/3755/33408896341_4827b770a8_o_d.jpg",
       description: "FGRibreau, photo prise à St Sebastien sur Loire, le 06/11/2016"
     },
     {
-      url: "/img/fgribreau-photo-la-cigale-nantes.jpg",
+      url: "https://farm3.staticflickr.com/2871/33408896471_123bf010d3_o_d.jpg",
       description: "FGRibreau, photo prise à la Cigale à Nantes, le 29/11/2016"
     },
     {
-      url: "/img/fgribreau-photo-musee-dobre-nantes.jpg",
+      url: "https://farm4.staticflickr.com/3672/32723056613_1f79591324_o_d.jpg",
       description: "FGRibreau, photo prise au Musée Dobré à Nantes, le 20/12/2016"
     },
     {
-      url: "/img/fgribreau-photo-the-walt-restaurant-disney-land-paris.jpg",
+      url: "https://farm4.staticflickr.com/3791/32723056533_11342b9630_o_d.jpg",
       description: "FGRibreau, photo prise au Walt Restaurant à DisneyLand Paris, le 20/11/2016"
     },
     {
-      url: "/img/fgribreau-photo-erdre-nantes.jpg",
+      url: "https://farm4.staticflickr.com/3727/32723056633_a090ca3c00_o_d.jpg",
       description: "FGRibreau, photo prise à La Chesnaie, le 06/11/2016"
     }
   ],
