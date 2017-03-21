@@ -123,9 +123,19 @@ li{
   margin-bottom:14px;
 }
 
+ul ul {
+  margin-left:30px;
+  margin-bottom: 14px;
+}
+
 li:last-child{margin-bottom:0}
 
 pre{
   overflow: auto;
+  margin-top: $paragraph-top-margin;
+}
+
+p + center > img,
+p + img{
   margin-top: $paragraph-top-margin;
 }
