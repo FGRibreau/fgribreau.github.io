@@ -1,16 +1,16 @@
 /* post */
 
-.post.hentry{
-  position:relative;
+.post.hentry {
+  position: relative;
   padding-top: 58px;
 
-  blockquote{
+  blockquote {
     border-left: 3px solid rgba(0,0,0,.8);
     padding-left: 20px;
     margin-left: -23px;
     margin-top: 29px;
     padding-bottom: 2px;
-    letter-spacing: .01rem;
+    letter-spacing: 0.01rem;
     font-weight: 400;
     font-style: italic;
     font-size: 21px;
@@ -19,29 +19,28 @@
     font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
   }
 
-  h1.post-title{
-    padding-top: 0px;
+  h1.post-title {
+    padding-top: 0;
   }
 
-  pre{
+  pre {
     font-family: Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
     overflow: scroll;
     overflow-y: hidden;
     display: block;
     padding: 10px;
     overflow-x: auto;
-    margin: 29px 0px 0px -15%;
+    margin: 29px 0 0 -15%;
 
     font-size: 85%;
     line-height: 1.45;
     background-color: #f6f8fa;
     border-radius: 3px;
-
     width: 130%;
   }
 }
 
-.date-header{
+.date-header {
   /* extracted from p */
   font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
   font-weight: 400;
@@ -51,6 +50,6 @@
   letter-spacing: -.003em;
 }
 
-.post-footer{
-  margin-top:39px;
+.post-footer {
+  margin-top: 39px;
 }
