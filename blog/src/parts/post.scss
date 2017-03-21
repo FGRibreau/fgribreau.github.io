@@ -2,6 +2,7 @@
 
 .post.hentry{
   position:relative;
+  padding-top: 58px;
 
   blockquote{
     border-left: 3px solid rgba(0,0,0,.8);
@@ -17,22 +18,20 @@
     letter-spacing: -.003em;
     font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
   }
+
+  h1.post-title{
+    padding-top: 0px;
+  }
 }
 
 .date-header{
   /* extracted from p */
   font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
   font-weight: 400;
-  font-style: normal;
-  font-size: 21px;
+  font-style: italic;
+  font-size: 17px;
   line-height: 1.58;
   letter-spacing: -.003em;
-
-  position: absolute;
-  right: -100px;
-  top: 0px;
-  text-align: center;
-  width: 100px;
 }
 
 .post-footer{

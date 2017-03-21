@@ -1,16 +1,23 @@
-#navbar-iframe-container{
-  display: none!important;
+body{
+  background: no-repeat url('../../img/header_background.png');
+  background-size: contain;
+  background-position: 0px 0px;
 }
 
-#outer-wrapper{
-
+#navbar-iframe-container{
+  display: none!important;
 }
 
 #menu_tabLabs{
   display:none;
 }
 
-#content-wrapper, #footer-wrapper{
-  width:700px;
+
+#header-wrapper,
+#content-wrapper{
+  width: 700px;
+  padding:0px 1.5rem;
   margin:0 auto;
+  background:#fff;
+  background:rgba(255, 255, 255, 0.8);
 }

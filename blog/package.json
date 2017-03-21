@@ -8,14 +8,16 @@
   },
   "bin": {},
   "scripts": {
-    "build":"webpack",
-    "start-dev":"python -m SimpleHTTPServer 8080"
+    "build": "webpack",
+    "build:watch": "webpack --watch",
+    "start:dev": "python -m SimpleHTTPServer 8080"
   },
   "main": "index.js",
   "keywords": [],
   "devDependencies": {
     "css-loader": "^0.27.1",
     "extract-text-webpack-plugin": "^1.0.1",
+    "image-webpack-loader": "^3.2.0",
     "node-sass": "^4.5.0",
     "sass-loader": "^4.1.0",
     "style-loader": "^0.13.2",
