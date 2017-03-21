@@ -2,13 +2,13 @@
 
 .post.hentry {
   position: relative;
-  padding-top: 58px;
+  padding-top: 30px;
 
   blockquote {
     border-left: 3px solid rgba(0,0,0,.8);
     padding-left: 20px;
     margin-left: -23px;
-    margin-top: 29px;
+    margin-top: $paragraph-top-margin;
     padding-bottom: 2px;
     letter-spacing: 0.01rem;
     font-weight: 400;
@@ -30,13 +30,17 @@
     display: block;
     padding: 10px;
     overflow-x: auto;
-    margin: 29px 0 0 -15%;
-
+    margin: 0;
     font-size: 85%;
     line-height: 1.45;
+  }
+
+  .gist, pre{
     background-color: #f6f8fa;
     border-radius: 3px;
     width: 130%;
+    margin-left:-15%;
+    margin-top: $paragraph-top-margin;
   }
 }
 
@@ -48,6 +52,8 @@
   font-size: 17px;
   line-height: 1.58;
   letter-spacing: -.003em;
+  padding-top: 58px;
+  display: block;
 }
 
 .post-footer {

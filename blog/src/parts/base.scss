@@ -1,3 +1,6 @@
+/* variables*/
+$paragraph-top-margin: 29px;
+
 body, blockquote, dd, dl, figure, form, h1, h2, h3, h4, h5, h6, menu, ol, p, pre, ul {
     margin: 0;
     box-sizing: border-box;
@@ -68,7 +71,7 @@ h3 {
 }
 
 p{
-    margin-top: 29px;
+    margin-top: $paragraph-top-margin;
     font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
     font-weight: 400;
     font-style: normal;
@@ -87,34 +90,42 @@ h4 + p {
     margin-top: 10px;
 }
 
-ul >li:before{
-  padding-top:3px;
-  font-size:16.8px;
-  font-size:14.4px;
-  font-size:11.42px;
-  padding-top:4px;
-  padding-right:15px;
-  content:'•'
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: $paragraph-top-margin;
 }
+
+ul >li:before{
+  padding-top: 3px;
+  font-size: 16.8px;
+  font-size: 14.4px;
+  font-size: 11.42px;
+  padding-top: 4px;
+  padding-right: 15px;
+  content: '\2022';
+}
+
 li{
-  font-family:medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
-  letter-spacing:.01rem;
-  font-weight:400;
-  font-style:normal;
-  font-size:21px;
-  line-height:1.58;
-  letter-spacing:-.003em;
+  font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
+  letter-spacing: .01rem;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 21px;
+  line-height: 1.58;
+  letter-spacing: -.003em;
   -webkit-hyphens:auto;
   -webkit-hyphenate-limit-before:2;
   -webkit-hyphenate-limit-after:3;
   -webkit-hyphenate-limit-lines:2;
   margin-left:30px;
-  margin-bottom:14px
+  margin-bottom:14px;
 }
 
 li:last-child{margin-bottom:0}
 
 pre{
   overflow: auto;
-  margin-top: 29px;
+  margin-top: $paragraph-top-margin;
 }
