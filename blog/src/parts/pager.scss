@@ -50,3 +50,8 @@
   color:#fff;
   transition:all 100ms ease-out;
 }
+
+/* do not display header navigation */
+.header-nav{
+  display:none;
+}
