@@ -35,6 +35,7 @@
     line-height: 1.45;
   }
 
+  /** FEAT: gist inclusion**/
   .gist, pre{
     background-color: #f6f8fa;
     border-radius: 3px;
@@ -42,6 +43,23 @@
     margin-left:-15%;
     margin-top: $paragraph-top-margin;
   }
+
+  /** FEAT: giphy gif inclusion **/
+  img[src^="https://media.giphy.com"] {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 100%;
+
+    &:nth-child(even) {
+      transform: rotateZ(1deg);
+    }
+
+    &:nth-child(odd) {
+      transform: rotateZ(-1deg);
+    }
+  }
+
 }
 
 .date-header {
