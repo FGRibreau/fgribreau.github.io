@@ -51,11 +51,11 @@
     display: block;
     width: 100%;
 
-    &:nth-child(even) {
+    &:nth-of-type(even) {
       transform: rotateZ(1deg);
     }
 
-    &:nth-child(odd) {
+    &:nth-of-type(odd) {
       transform: rotateZ(-1deg);
     }
   }
