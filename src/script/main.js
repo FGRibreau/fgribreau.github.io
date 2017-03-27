@@ -79,8 +79,8 @@ function BackgroundAnimation(el, interval){
 
 
 // Testimonials
-const hide = (el) => el.classList.add('--hide');
-const show = (el) => el.classList.remove('--hide');
+const hide = (el) => el.classList.add('hidden');
+const show = (el) => el.classList.remove('hidden');
 
 function Testimonials(els, {onNextTestimonial, onNextPart}){
   const _els = Array.from(els);

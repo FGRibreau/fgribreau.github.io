@@ -32,7 +32,7 @@
     transform-origin: 50% 50%;
     transform: scale(1);
 
-    &.--hide{
+    &.hidden{
       transform: scale(0);
       transition:transform 400ms ease-out;
     }
@@ -76,7 +76,7 @@
           height: auto;
           width:100%;
 
-          &.--hide{
+          &.hidden{
             transform: scale(0) translateX(-10vw);
             height: 0px;
             transition:all 400ms ease-out;
