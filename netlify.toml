@@ -1,6 +1,6 @@
 # Global settings applied to the whole site.
 [build]
-  base    = "website"
+  # base    = "website"
   publish = "dist"
   command = "npm run build"
 
