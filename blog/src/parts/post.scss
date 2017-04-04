@@ -1,3 +1,22 @@
+/* post header */
+
+.status-msg-wrap{
+  margin: 0;
+  width: 100%;
+
+  .status-msg-body{
+    padding: 0;
+  }
+
+  .status-msg-border{
+    .status-msg-bg{
+      a{
+        background-image: none;
+      }
+    }
+  }
+}
+
 /* post */
 
 .post.hentry {
