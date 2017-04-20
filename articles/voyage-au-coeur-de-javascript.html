@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Article">
+<head>
+  <meta charset="utf-8" />
+
+  <title>
+    Voyage au coeur de JavaScript (ECMAScript 3)
+  </title>
+
+  <meta itemprop="name" content="Voyage au coeur de JavaScript" />
+  <meta itemprop="description" content="Voyage au coeur de JavaScript" />
+  <meta itemprop="image" content="_voyage-au-coeur-de-javascript/js_logo.png" />
+
+  <meta name="description" content="Voyage au coeur de JavaScript est un résumé sur les principaux composants du langage ECMAScript 3" />
+  <meta name="author" content="Francois-Guillaume Ribreau" />
+  <link rel="image_src" href="_voyage-au-coeur-de-javascript/js_logo.png" />
+
+  <link rel="stylesheet" href="./css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./css/prettify.css" />
+
+  <!--[if lt IE 9]>
+  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <style type="text/css" media="screen">
+    .topbar {
+      position:inherit;
+
+    }
+    .topbar-inner, .topbar .fill {
+
+      padding: 0 10px;
+      border-radius: 0 0 10px 10px;
+    }
+
+    /* The white background content wrapper */
+    .content {
+      padding: 20px 0;
+    }
+
+    /* Extend of twitter bootstrap */
+
+    /*
+      HTML5 convention
+      http://dev.w3.org/html5/spec-author-view/the-code-element.html#the-code-element
+    */
+
+    pre code{
+      background-color:inherit;
+      color:inherit;
+      padding:0;
+    }
+
+    figure{
+      text-align:center;
+      position:relative;
+    }
+
+    figure img{
+      left: 50%;
+      position: relative;
+      margin-left: -100%;
+
+    }
+
+    .info-author{
+      padding-bottom: 2px;
+    }
+
+    #social{
+      padding:0px 0px 10px 0px;
+    }
+
+    footer{
+      text-align:center;
+    }
+  </style>
+</head>
+<body onload="prettyPrint()">
+
+<div class="container">
+
+  <div class="content">
+    <div class="page-header">
+      <h1>
+        Voyage au coeur de JavaScript.
+      </h1>
+
+    </div>
+
+    <div class="row">
+      <div class="span10">
+
+<div id="social">
+<div class="g-plusone" data-size="medium" data-annotation="inline"></div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="FGRibreau" data-lang="fr">Tweeter</a>
+</div><!-- /social -->
+
+
+<p>
+  Cet article est une traduction de <a href="http://dmitrysoshnikov.com/ecmascript/javascript-the-core/">JavaScript. The Core</a> écrit par Dmitry Soshnikov. Javascript The Core est un sommaire détaillé de la série d’article &#8220;<a href="http://dmitrysoshnikov.com/tag/ecma-262-3/">ECMA-262-3 in detail</a>&#8221;.
+</p>
+
+<ol><li><a href="#L_objet">L'objet</a></li><li><a href="#Le_cha_nage_des_prototypes">Le chaînage des prototypes</a></li><li><a href="#Le_constructeur">Le constructeur</a></li><li><a href="#La_pile_des_contextes_d_ex_cution">La pile des contextes d'exécution</a></li><li><a href="#Le_contexte_d_ex_cution">Le contexte d'exécution</a></li><li><a href="#L_objet_des_variables">L'objet des variables</a></li><li><a href="#L_objet_d_activation">L'objet d'activation</a></li><li><a href="#La_cha_ne_des_port_es__Scope_chain_">La chaîne des portées (Scope chain)</a></li><li><a href="#Les_closures__fermeture_">Les closures (fermeture)</a></li><li><a href="#La_valeur_this">La valeur this</a></li><li><a href="#Conclusion">Conclusion</a></li></ol>
+
+
+<p>Commençons par étudier le concept d'<i>objet</i>, un fondamental d'ECMAScript.</p>
+
+<a name="L_objet"></a>
+<h4>L'objet</h4>
+<p>
+  ECMAScript étant un langage orienté objet de haut niveau, il fonctionne avec des objets. Il possède aussi des primitives mais elles sont, si besoin est, converties en objet.
+  <blockquote><p>Un objet est une <i>collection de propriétés</i> qui possède un <i>unique objet prototype</i>. Le prototype peut avoir pour valeur soit un objet soit <code>null</code>.</p>
+  </blockquote>
+</p>
+<p>
+  Prenons pour exemple un objet simple. Le prototype d’un objet est référencé par la propriété interne <code>[[Prototype]]</code>. Dans le schéma ci-dessous, nous préférerons employer la notation en underscore <code>__&#8249;internal-property&#8250;__</code> au lieu des doubles crochets. Ceci tout particulièrement pour l'objet prototype <code>__proto__</code> (qui est une propriété disponible mais non standard, disponible dans certains moteurs comme SpiderMonkey).
+</p>
+
+<pre class="prettyprint"><code class="language-javascript">var foo = {
+  x: 10,
+  y: 20
+};</code></pre>
+
+<p>
+Cet objet possède deux propriétés explicitement déclarées et une propriété <code>__proto__</code> implicite qui est une référence au prototype de <i>foo</i>:
+</p>
+
+<figure>
+  <img src="_voyage-au-coeur-de-javascript/basic-object.png" alt="Figure 1">
+  <figcaption>Figure 1. Un objet basique avec un prototype.</figcaption>
+</figure>
+
+<p>
+  Mais pourquoi ces prototypes sont-ils requis ? Analysons le concept de la <i>chaîne des prototypes</i> (<i>prototype chain</i>).
+</p>
+
+<a name="Le_cha_nage_des_prototypes"></a>
+<h4>Le chaînage des prototypes</h4>
+
+<p>
+  Les prototypes sont des objets comme les autres et peuvent posséder leurs propres prototypes. Un prototype peut posséder une référence vers un autre prototype et ainsi de suite. Lorsque plusieurs prototype sont chaînés par des références non-nulles on dit qu'il s'agit d'une <i>chaîne de prototype</i> (<i>prototype chain</i>).
+</p>
+
+<blockquote>
+  <p>
+    Une chaîne de prototype est une chaîne finie d'objet utilisé pour implémenter l'héritage et le partage de propriétés.
+  </p>
+</blockquote>
+
+<p>
+  Examinons le cas où nous avons deux objets qui diffèrent sensiblement. Un langage bien conçu devrait nous permettre de réutiliser les caractéristiques similaires entre les deux objets sans nous répéter. Dans le cas d'un langage basé sur les classes, ce style de réutilisation du code est appelé <i>l'héritage basé sur les classes</i> (<i>class-based inheritance</i>) (une classe <code>A</code> possède les fonctionnalités similaires aux deux classes <code>B</code> et <code>C</code>. <code>B</code> et <code>C</code> héritent de <code>A</code> et implémentent chacune la fonctionnalité qui les différencie).
+</p>
+
+<p>
+  ECMAScript ne possède pas de concept de classe. Cependant, le style de réutilisation du code diffère très peu (il est même parfois plus flexible que dans un langage basé sur les classes) et est possible grâce à la <i>chaîne des prototypes</i>. Ce type d'héritage est appelé l'<i>héritage par délégation</i> (<i>delegation based inheritance</i>). Pour être plus précis, dans le cas d'ECMAScript, on parle d'<i>héritage prototypal</i> (<i>prototype based inheritance</i>).
+</p>
+
+<p>
+  Comme pour l'exemple avec les classes <code>A</code>, <code>B</code> et <code>C</code>, en ECMAScript nous créons les objets: <code>a</code>, <code>b</code> et <code>c</code>. L'objet <code>a</code> contient la partie commune aux objets <code>b</code> et <code>c</code>. Et <code>b</code> et <code>c</code> possèdent uniquement leurs propres propriétés et méthodes.
+</p>
+
+<pre class="prettyprint"><code class="language-javascript">var a = {
+  x: 10,
+  calculate: function (z) {
+    return this.x + this.y + z
+  }
+};
+
+var b = {
+  y: 20,
+  __proto__: a
+};
+
+var c = {
+  y: 30,
+  __proto__: a
+};
+
+// appel de la méthode héritée
+b.calculate(30); // 60
+c.calculate(40); // 80</code></pre>
+
+<p>
+  Facile n'est-ce pas ? Nous observons donc que <code>b</code> et <code>c</code> ont accès à la méthode <code>calculate</code> définie par l'objet <code>a</code> qui est possible grâce au <i>chaînage prototypal</i>.
+</p>
+
+<p>
+  La règle est simple: si une propriété ou une méthode n'est pas trouvée dans l'objet lui-même, la propriété/méthode sera recherchée dans la <i>chaîne de prototype</i>. Si la propriété n'est pas trouvée dans le prototype, alors une recherche aura lieu dans le prototype du prototype et ainsi de suite dans toute la <i>chaîne de prototype</i> (ce procédé est le même pour l'héritage basé sur les classes, lors de la résolution d'une <code>méthode</code> héritée, il y a un parcours de la chaîne des classes). La première propriété/méthode trouvée avec le même nom sera utilisée. Une propriété trouvée est appelée propriété <i>héritée</i>. Si la propriété n'est pas trouvée après le parcours intégral de la chaîne de prototype, la valeur <code>undefined</code> sera retournée.
+</p>
+<p>
+  Notons que la valeur de <code>this</code> est égale au contexte de l'objet <i>original</i> lorsque l'on accède à une méthode héritée (et non au contexte du prototype de l'objet dans lequel la méthode à été trouvée). Dans l'exemple ci-dessous <code>this.y</code> est récupéré depuis <code>b</code> et <code>c</code> mais pas <code>a</code>. Alors que <code>this.x</code> est récupéré depuis <code>a</code> grâce au mécanisme de <i>chaînage prototypal</i>.
+</p>
+
+<p>
+  Si un prototype n'est pas spécifié explicitement sur un objet alors la valeur par défaut de <code>__proto__</code> sera assignée: <code>Object.prototype</code>. L'objet <code>Object.prototype</code> est le dernier maillon de la chaîne et possède lui aussi une propriété <code>__proto__</code> qui a pour valeur <code>null</code>.
+</p>
+
+<p>La figure suivante montre la hiérarchie de l'héritage entre nos objets <code>a</code>, <code>b</code> et <code>c</code>:</p>
+
+<figure>
+  <img src="_voyage-au-coeur-de-javascript/prototype-chain.png" alt="">
+  <figcaption>Figure 2. Une chaîne de prototype</figcaption>
+</figure>
+
+<p>
+  Nous avons souvent besoin d'avoir des objets avec la même <i>structure</i> (le même groupe de propriétés) et des <i>états</i> différents. Pour répondre à cette problématique, la <i>fonction constructeur</i> permet de générer des objets suivant un pattern spécifié.
+</p>
+
+<a name="Le_constructeur"></a>
+<h4>Le constructeur</h4>
+
+<p>
+  A part créer des objets suivant un pattern spécifié, la fonction <i>constructeur</i> fait autre chose très utile. Il assigne <i>automatiquement</i> un (objet) <i>prototype</i> à chaque objet nouvellement créé. Ce prototype sera conservé dans la propriété <code>ConstructorFunction.prototype</code>.
+</p>
+
+<p>
+  Nous pourrions par exemple réécrire l'exemple précédent en utilisant une fonction constructeur pour générer les objets <code>b</code> et <code>c</code> et analyser le rôle que jouera l'objet <code>a</code> et son prototype <code>Foo.prototype</code> :
+</p>
+
+<pre class="prettyprint"><code class="language-javascript">// fonction constructeur
+function Foo(y) {
+  // qui peut créer des objets
+  // suivant un pattern spécifié.
+  // C'est à dire qu'ils posséderont
+  // leurs propres propriétés "y"
+  // après leurs créations
+  this.y = y;
+}
+
+// "Foo.prototype" est une référence vers
+// le prototype qui sera assigné aux objets
+// nouvellement créé. Il sera utilisé
+// pour définir les méthodes et propriétés
+// que nous souhaiterons partager ou hériter.
+// Ainsi nous pouvons définir:
+
+// la propriété héritée "x"
+Foo.prototype.x = 10;
+
+// et une méthode héritée "calculate"
+Foo.prototype.calculate = function (z) {
+  return this.x + this.y + z;
+};
+
+// maintenant créons nos objets
+// "b" et "c" en utilisant le "pattern" Foo
+var b = new Foo(20);
+var c = new Foo(30);
+
+// appel des méthodes héritées
+b.calculate(30); // 60
+c.calculate(40); // 80
+
+console.log(
+
+  b.__proto__ === Foo.prototype, // true
+  c.__proto__ === Foo.prototype, // true
+
+  // De plus, "Foo.prototype" créé automatiquement
+  // une propriété "constructor" qui est en réalité
+  // une référence vers la fonction constructeur;
+  // Il est possible d'accéder au constructeur des
+  // instances "b" et "c" via cette propriété héritée
+
+  b.constructor === Foo, // true
+  c.constructor === Foo, // true
+  Foo.prototype.constructor === Foo // true
+
+  b.calculate === b.__proto__.calculate, // true
+  b.__proto__.calculate === Foo.prototype.calculate // true
+
+);
+</code></pre>
+
+<p>
+  Le code ci-dessus peut être representé sous la forme d'un diagramme relationnel:
+</p>
+
+<figure>
+  <img src="_voyage-au-coeur-de-javascript/constructor-proto-chain.png" alt="">
+  <figcaption>Figure 3. La relation entre constructeur et objet.</figcaption>
+</figure>
+
+<p>
+   Ce diagramme montre que tous les objets possèdent un prototype. Le constructeur <code>Foo</code> possède sa propre propriété <code>__proto__</code> qui est une référence vers <code>Function.prototype</code> qui elle même référence <code>Object.prototype</code> via sa propriété <code>__proto__</code>. Donc <code>Foo.prototype</code> est simplement une propriété explicite de <code>Foo</code> qui sera référencée comme prototype des objets (instance de <code>Foo</code>) <code>b</code> et <code>c</code>.
+</p>
+
+<p>
+  Nous venons donc de <i>classifier</i> notre code grâce à <code>Foo</code>. Nous pouvons appeler cette combinaison constructeur + prototype une &#8220;classe&#8221;. En Python, les classes dynamiques fonctionnent exactement de la même manière pour la résolution des propriétés et des méthodes. De ce point de vue les classes en Python sont juste un sucre syntaxique de l'héritage basé sur la délégation (<i>delegation based inheritance</i>) utilisé en ECMAScript. L'explication complète et détaillée de ce méchanisme est décrite dans le chapitre 7 des <i>ES3 Series</i>: <a href="http://dmitrysoshnikov.com/ecmascript/chapter-7-1-oop-general-theory/" title="">Chapter 7.1. OOP. The general theory</a> et <a href="http://dmitrysoshnikov.com/ecmascript/chapter-7-1-oop-general-theory/" title="">Chapter 7.2. OOP. ECMAScript implementation</a>.
+</p>
+
+<p>
+  Maintenant que nous avons vu l'aspect basique des objets, observons comment le système d'exécution (<i>runtime program execution</i>) est implémenté en ECMAScript. Avec ce que l'on appelle la pile des contextes d'exécution (<i>execution context stack</i>) où chaque élément qui y réside peut être représenté comme un objet. Eh oui, presque tout en ECMAScript est basé sur le concept d'objet &#9786;.
+</p>
+
+<a name="La_pile_des_contextes_d_ex_cution"></a>
+<h4>La pile des contextes d'exécution</h4>
+
+<p>
+  Il y a trois types de code en ECMAScript: le code <i>global</i>, le code des <i>fonctions</i> et le code <i>eval</i>. Chaque code est évalué depuis son contexte d'exécution. Il y a un unique contexte global et il peut y avoir plusieurs instances des contextes d'exécution des fonctions et des <i>evals</i>. Chaque appel à une fonction évaluera son code avec le contexte d'exécution qui lui est propre. Chaque appel à la fonction <code>eval</code> évaluera son code avec le contexte d'exécution de <i>eval</i>.
+</p>
+
+<p>Notons ici qu'une fonction peut générer une liste infinie de contexte (même si la fonction est appelée récursivement) car chaque appel produit un nouveau contexte avec un nouvel <i>état</i>:</p>
+
+<pre class="prettyprint"><code class="language-javascript">
+function foo(bar) {}
+
+// chaque appel de foo
+// génère trois contextes différents
+// avec des états différents
+// (ex: la valeur de l'argument bar)
+
+foo(10);
+foo(20);
+foo(30);
+</code></pre>
+
+<p>
+  Un contexte d'exécution peut activer un autre contexte. Par exemple une fonction appelle une autre fonction (ou le contexte global appelle une fonction globale) et ainsi de suite. Tout ceci est regroupé dans une pile (stack) appelée pile des contextes d'exécution (<i>execution context stack</i>).
+</p>
+
+<p>
+  Un contexte qui active un autre contexte est appelé un <i>caller</i> (<i>appelant</i>). Un contexte activé est appelé un <i>callee</i> (<i>appelé</i>). Un <i>callee</i> peut-être en même temps le <i>caller</i> d'un autre <i>callee</i> (par exemple une fonction appelée depuis le contexte global qui appelle une autre fonction).
+</p>
+
+<p>
+  Quand un caller active (appelle) un callee, le caller suspend son exécution et passe le contrôle au callee. Le callee est ajouté à la pile et devient le contexte d'exécution actif. Dès la fin de l'exécution du callee, le contrôle est retourné au caller et l'évaluation continue à nouveau avec son propre contexte (qui peut activer une fois de plus d'autres contextes) jusqu'à la fin de ses instructions et ainsi de suite. Un callee peut seulement retourner une valeur (via un <i>return</i>) ou quitter avec une <i>exception</i>. Une exception lancée (<i>throw</i>) mais non attrapée (<i>catch</i>) peut quitter un ou plusieurs contextes (qui seront enlevés successivement de la pile).
+</p>
+
+<p>
+  Tous les programmes d'exécution ECMAScript (<i>program runtime</i>) ont une pile des contextes d'exécution (<i>execution context (EC) stack</i>) où le contexte actif est situé en haut de la pile:
+</p>
+
+<figure>
+  <img src="_voyage-au-coeur-de-javascript/ec-stack.png" alt="">
+  <figcaption>Figure 4. La pile des contextes d'exécution</figcaption>
+
+</figure>
+
+<p>
+  Quand un programme démarre, il entre dans le contexte d'exécution global qui est à la fois la base et le premier élément de la pile. Ensuite le code global procède à plusieurs initialisations comme les créations des objets et des fonctions. Durant l'évaluation du contexte d'exécution global, son code pourra activer d'autres fonctions (déjà créées) qui ajouteront leurs contextes d'exécution dans la pile et ainsi de suite. Une fois l'initialisation faite, le système d'exécution (<i>runtime system</i>) attend que des événements se produisent (un click de souris par exemple), ce qui activera d'autres fonctions qui créeront d'autres contextes d'exécution.
+</p>
+
+<p>
+  Le schéma ci-dessus montre la modification de la pile des contextes d'exécution en fonction de l'entrée et de la sortie d'un contexte d'exécution <code>EC1</code>. Le contexte global est ici appelé <code>Global EC</code> (EC pour <i>execution context</i>).
+</p>
+
+<figure>
+  <img src="_voyage-au-coeur-de-javascript/ec-stack-changes.png" alt="">
+  <figcaption>Figure 5. Les changements dans la pile des contextes d'exécution</figcaption>
+</figure>
+
+<p>
+  Voici donc comment les systèmes d'exécution (<i>runtime system</i>) d'ECMAScript gèrent l'exécution du code.
+</p>
+
+<p>
+  Pour plus d'information sur les contextes d'exécution en ECMAScript consultez <a href="http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contextes/">Chapter 1. Execution context</a>.
+</p>
+
+<p>
+  Comme nous l'avons dit précédemment, un contexte d'exécution dans la pile peut être présenté comme un objet. Voyons voir sa structure et quel type d'<i>état</i> (quelles propriétés) un contexte a-t-il besoin pour exécuter son code.
+</p>
+
+<a name="Le_contexte_d_ex_cution"></a>
+<h4>Le contexte d'exécution</h4>
+
+<p>
+  Un contexte d'exécution peut-être presenté comme un objet simple. Chaque contexte d'exécution possède une liste de propriétés qui sont nécessaires pour suivre la progression de l'exécution du code associé. Le schéma suivant décrit la structure d'un contexte:
+</p>
+
+<figure>
+  <img src="_voyage-au-coeur-de-javascript/execution-context.png" alt="">
+  <figcaption>Figure 6. La structure d'un contexte d'exécution</figcaption>
+</figure>
+
+<p>
+  Il possède donc trois propriétés (<i>l'objet de ses variables</i>, une valeur <code>this</code> et la chaîne des portées (<i>scope chain</i>)). Un contexte d'exécution peut avoir des états supplémentaires suivant l'implémentation.
+</p>
+
+<p>
+  Regardons ces propriétés plus en détail.
+</p>
+
+<a name="L_objet_des_variables"></a>
+<h4>L'objet des variables</h4>
+
+<blockquote>
+    <p>
+      L'<i>objet des variables</i> contient les données qui sont accessibles (dans la portée (<i>scope</i>)) depuis le contexte d'exécution. C'est un objet spécial qui est associé au contexte et qui stocke les variables et les fonctions définies dans le contexte.
+    </p>
+</blockquote>
+
+<p>
+  Notons que les <i>expressions de fonction</i> (contrairement aux <i>déclarations de fonction</i>) ne sont pas inclues dans l'<i>objet des variables</i>.
+</p>
+
+<p>
+  L'objet des variables est un concept abstrait. Selon le type de contexte il est physiquement representé sous des objets différents. Par exemple, dans le contexte global, l'objet des variables correspond à l'objet global (c'est pourquoi nous avons la possibilité d'accéder à des variables globales simplement parce qu'elles sont des propriétés de l'objet global).
+</p>
+
+<p>
+  Prenons l'exemple suivant dans le contexte d'exécution global:
+</p>
+
+<pre class="prettyprint"><code class="language-javascript">
+var foo = 10;
+
+function bar() {} // function declaration, FD
+(function baz() {}); // function expression, FE
+
+console.log(
+  this.foo == foo, // true
+  window.bar == bar // true
+);
+
+console.log(baz); // ReferenceError, "baz" n'est pas définie
+</code></pre>
+
+<p>
+  Selon l'exemple ci-dessus l'objet des variables du contexte global aura les propriétés suivantes:
+</p>
+
+<figure>
+  <img src="_voyage-au-coeur-de-javascript/variable-object.png" alt="">
+  <figcaption>Figure 7. L'objet des variables global.</figcaption>
+</figure>
+
+<p>
+  La fonction <code>baz</code> étant une <i>expression de fonction</i> elle n'est pas incluse dans l'objet des variables. C'est pourquoi nous avons eu une <code>ReferenceError</code> lorsque nous avons tenté d'y accéder en dehors de la fonction elle même.
+</p>
+
+<p>
+  Notons que contrairement à d'autres langages comme C ou C++, seules les fonctions créent de nouvelles portées (scope) en ECMAScript. Les variables et les fonctions encapsulées définies à l'intérieur du scope de la fonction ne sont pas directement visibles depuis l'extérieur et ne polluent pas l'objet des variables global.
+</p>
+
+<p>
+  <code>eval</code> crée aussi un nouveau contexte d'exécution (spécifique à eval). Cependant, <code>eval</code> utilise soit l'objet des variables global soit l'objet des variables de la fonction appelante (la fonction qui a appelé <code>eval</code>).
+</p>
+
+<p>
+  Et qu'en est-il des fonctions et de leurs objets variable ? Dans le contexte d'une fonction, un objet des variables est representé comme étant un <i>objet d'activation</i>.
+</p>
+
+<a name="L_objet_d_activation"></a>
+<h4>L'objet d'activation</h4>
+
+<p>
+  Quand une fonction est <i>activée</i> (appelée) par son appelant, un objet special appelé <i>objet d'activation</i> est créé. Il est rempli des <i><a href="http://fr.wikipedia.org/wiki/Param%C3%A8tre#Param.C3.A8tre_formel" >paramètres formels</a></i> et de l'objet special <code>arguments</code>. L'<i>objet d'activation</i> est ensuite utilisé comme étant l'objet des variables dans le contexte de la fonction.
+</p>
+
+<p>
+  L'<i>objet d'activation</i> (c'est à dire l'objet des variables d'une fonction) est identique à l'objet des variables, sauf qu'en plus de stocker les variables et les déclarations de fonction il stock aussi les paramètres formels et l'objet <code>arguments</code>.
+</p>
+
+<p>
+  Considérons l'exemple suivant:
+</p>
+
+<pre class="prettyprint"><code class="language-javascript">function foo(x, y) {
+  var z = 30;
+  function bar() {} // Fonction declaration, FD
+  (function baz() {}); // Fonction expression, FE
+}
+
+foo(10, 20);
+</code></pre>
+
+<p>
+  Voici l'objet d'activation (AO) du contexte de la fonction <code>foo</code>:
+</p>
+
+<figure>
+  <img src="_voyage-au-coeur-de-javascript/activation-object.png" alt="">
+  <figcaption>Figure 8. Un objet d'activation.</figcaption>
+</figure>
+
+<p>
+  Une fois de plus, la fonction <code>baz</code> n'est pas incluse dans l'objet des variables/activation car c'est une expression de fonction.
+</p>
+
+<!-- #todo Link Chapter 2. Variable object. -->
+
+<p>
+  Passons maintenant au chapitre suivant. Comme vous le savez sans doute, il est possible en ECMAScript d'utiliser <i>des fonctions imbriquées</i> (ou <i>inner functions</i>) et d'accéder aux variables des fonctions parentes (ou du contexte <i>global</i>) depuis ces fonctions. Nous venons de décrire ce qu'était l'objet des variables (ou objet d'activation) dans le contexte d'exécution d'une fonction, passons maintenant à la <i>chaîne des portées</i> ou <i>scope chain</i>.
+</p>
+
+<a name="La_cha_ne_des_port_es__Scope_chain_"></a>
+<h4>La chaîne des portées (Scope chain)</h4>
+
+<blockquote>
+  <p>
+    Une <i>chaîne de portée</i> (<i>scope chain</i>) est une liste d'objet qui est parcourue lorsqu'un <i>identifiant</i> (présent dans le code du contexte) est évalué.
+  </p>
+</blockquote>
+
+<p>
+ La règle est une fois de plus simple et très similaire à celle du chaînage des prototypes. Si une variable n'est pas trouvée dans son propre <i>scope</i> (c'est à dire que si la variable n'est pas trouvée dans l'objet des variables/d'activation du contexte d'exécution actuel) une recherche débute dans la variable objet du parent et ainsi de suite.
+</p>
+
+<p>
+  Selon les contextes un identifiant peut être: le <i>nom</i> d'une variable, une fonction déclarée, un paramètre formel, etc. Si une fonction contient dans son code des identifiants qui ne correspondent pas à des variables locales (ou à une fonction locale ou à un paramètre formel) cette variable est appelée <i>variable libre</i>. Pour <i>rechercher ces variables libres</i> la <i>chaîne des portées</i> (<i>scope chain</i>) est utilisée.
+</p>
+
+<p>
+  Généralement la chaîne des portées est une liste de toutes les variables objets parentes avec en début de liste l'<i>objet des variables/d'activation</i> de la fonction. Cependant la chaîne des portées peut aussi contenir n'importe quel autre objet comme par exemple des objets ajoutés dynamiquement à la chaîne pendant l'exécution du contexte (comme les <i>with-objects</i> ou les objets spéciaux des <i>clauses catch</i>).
+</p>
+
+<p>
+  Lorsqu'il y a <i>résolution</i> (recherche) d'un identifiant, la chaîne des portées est parcourue en partant de l'objet d'activation puis ensuite (si l'identifiant n'est pas trouvé dans l'objet d'activation) jusqu'au sommet de la chaîne. Le processus de résolution est le même que pour la recherche dans une chaîne de prototype.
+</p>
+
+<pre class="prettyprint"><code class="language-javascript">var x = 10;
+
+(function foo() {
+  var y = 20;
+  (function bar() {
+    var z = 30;
+    // "x" et "y" sont des "variables libres"
+    // et sont trouvées (dans la chaîne des
+    // portées de bar) dans l'objet succédant
+    // à l'objet d'activation de bar
+    console.log(x + y + z);
+  })();
+})();
+</code></pre>
+
+<p>
+  Nous pouvons supposer que le lien entre les objets de la chaîne des portées s'effectue via une propriété implicite <code>__parent__</code> qui pointe vers l'objet suivant dans la chaîne. Cette implémentation peut être testée directement dans un environnement Rhino car il expose cette propriété.
+  <!-- #todo ES5 lexical environments--> En utilisant le concept de <code>__parent__</code> nous pouvons donc représenter l'exemple ci-dessus par le schéma suivant:
+</p>
+
+<figure>
+  <img src="_voyage-au-coeur-de-javascript/scope-chain.png" alt="">
+  <figcaption>Figure 9. Une chaîne des portées (scope chain).</figcaption>
+</figure>
+
+<p>
+  Remarquons que les variables d'objets parent sont enregistrées dans les propriétés <code>[[Scope]]</code> des fonctions.
+</p>
+
+<p>
+  A l'exécution du code, la chaîne des portées peut être augmentée à l'aide des objets créés par les déclarations <code>with</code> et des clauses <code>catch</code>. Du fait que ces objets sont de simples objets, ils peuvent posséder des prototypes (et donc une chaîne de prototype). Ce fait implique que la recherche dans la chaîne des portées s'effectue maintenant dans un espace à <i>deux dimensions</i>: pour chaque élément de la chaîne, la recherche s'effectue d'abord dans l'objet des variables de la portée puis dans le prototype de l'objet (s'il existe) et enfin dans l'objet parent et ainsi de suite.
+</p>
+
+<p>Pour cet exemple de code:</p>
+
+<pre class="prettyprint"><code class="language-javascript">Object.prototype.x = 10;
+
+var w = 20;
+var y = 30;
+
+// Dans SpiderMonkey l'objet des variables
+// du contexte global hérite de
+// "Object.prototype"
+
+console.log(x); // 10
+
+(function foo() {
+
+  // Variables locales de "foo"
+  var w = 40;
+  var x = 100;
+
+  // "x" est trouvé dans "Object.prototype"
+  // parce que {z:50} en hérite
+
+  with ({z: 50}) {
+    console.log(w, x, y , z); // 40, 10, 30, 50
+  }
+
+  // une fois que l'objet "with" est
+  // supprimé de la chaîne des portées
+  // "x" est encore present dans le
+  // l'objet d'activation du contexte "foo";
+  // de même que "w"
+  console.log(x, w); // 100, 40
+
+  // et voici comment accéder à la
+  // variable globale cachée "w"
+  // dans l'environnement d'un navigateur
+  console.log(window.w); // 20
+
+})();
+</code></pre>
+
+<p>
+nous obtenons la structure suivante:
+</p>
+
+<figure>
+  <img src="_voyage-au-coeur-de-javascript/scope-chain-with.png" alt="">
+  <figcaption>Figure 10. Une chaîne des portées <i>augmentée par with</i>.</figcaption>
+</figure>
+
+<p>
+  Notons que les implémentations d'ECMAScript ne voient pas forcément leur objet global hériter de <code>Object.prototype</code>. Le comportement décrit dans le schéma précédent (qui référence une variable non-définie <code>x</code> depuis le contexte global) peut être testé sous SpiderMonkey.
+</p>
+
+<p>
+  Il ne se passe rien de special lors de la récupération de données parentes depuis une fonction imbriquée (il s'agit juste d'un parcours de la chaîne des portées à la recherche de la donnée). Cependant, comme nous l'avons mentionné plus haut, dès qu'un contexte se termine, tout son état et lui même sont détruits. Dans le même temps une <i>fonction imbriquée</i> peut être retournée depuis la fonction parent. De plus, cette fonction pourrait très bien être activée plus tard depuis un autre contexte. Comment fonctionnera cette forme d'activation si le contexte de quelques variables libres est déjà détruit ? D'un point de vue théorique, le concept qui aide à résoudre ce problème est appelé une <i>closure</i> (<i>lexical closure</i>) et est en ECMAScript directement lié au concept de chaîne des portées (<i>scope chain</i>).
+</p>
+
+<a name="Les_closures__fermeture_"></a>
+<h4>Les closures (fermeture)</h4>
+
+<p>
+  En ECMAScript, les fonctions sont des <i>objets de premier ordre</i> (<i>first-class objects</i>). Cela signifie que les fonctions peuvent être passées en argument à d'autres fonctions (dans ce cas là on les appelle des "<i>funargs</i>" raccourci pour "functional arguments"). Les fonctions qui reçoivent des <i>funargs</i> sont appelées <i>higher-order functions</i> ou, plus proche du langage mathématique, des <i>opérateurs</i>. De même une fonction peut-être retournée par une autre fonction. Les fonctions qui retournent d'autres fonctions sont appelées <i>function valued functions</i> (ou des fonctions à valeur fonctionnelle).
+</p>
+
+<p>
+  Les "funargs" et "functional values" posent deux problèmes conceptuels. Ces deux sous-problèmes ont été généralisés en un seul, le "problème du <i>funarg</i>" (ou "Le problème de l'argument fonctionnel"). Et pour résoudre précisement ce problème, le concept de <i>closure</i> à été inventé. Décrivons maintenant plus en détail ces deux sous-problèmes (nous verrons par la suite qu'ils ont été résolus dans ECMAScript par la propriété <code>[[Scope]]</code> des fonctions).
+</p>
+
+<p>
+  Commençons par le sous-problème "<i>upward funarg</i>" (que l'on pourrait traduire par le "<i>funarg</i> ascendant"). Ce problème apparaît lorsqu'une fonction est retournée vers le haut (c'est à dire vers l'extérieur) depuis une autre fonction et qu'elle utilise des <i>variables libres</i> (type de variable déjà mentionné précédemment). Afin de pouvoir accéder aux variables du contexte parent (même une fois que le <i>contexte parent se termine</i>) au moment de la <i>création</i> de cette fonction imbriquée, ces variables sont enregistrées dans la propriété <code>[[Scope]]</code> de la chaîne des portées parent. Ensuite, quand la fonction est <i>activée</i> la chaîne des portées de son contexte aura pour valeur la combinaison de l'objet d'activation et de sa propriété <code>[[Scope]]</code>.
+</p>
+
+<pre><code>chaîne des portées = Objet d'activation + [[Scope]]</code></pre>
+
+<p>
+  Il faut retenir qu'une fonction sauvegarde, au <strong>moment</strong> de sa création, la chaîne des portées parente. C'est cette même chaîne des portées qui sera utilisée pour la résolution des variables lors des prochains appels de la fonction.
+</p>
+
+<pre class="prettyprint"><code class="language-javascript">function foo() {
+  var x = 10;
+  return function bar() {
+    console.log(x);
+  };
+}
+
+// "foo" retourne une fonction
+// et cette fonction retournée
+// utilise la variable libre "x"
+
+var returnedFunction = foo();
+
+// variable globale "x"
+var x = 20;
+
+// exécution de la fonction retournée
+returnedFunction(); // 10, et non 20
+</code></pre>
+
+<p>
+  Ce style de portée (<i>scope</i>) est appelé porté statique (ou lexicale). Dans cet exemple nous pouvons voir que la variable <code>x</code> est enregistrée dans le <code>[[Scope]]</code> de la fonction retournée <code>bar</code>. Il existe aussi la <i>portée dynamique</i> qui aurait eu pour conséquence dans le code précédent de résoudre la variable <code>x</code> comme ayant pour valeur <code>20</code> et non <code>10</code>. Néanmoins la portée dynamique n'est pas utilisée dans ECMAScript.
+</p>
+
+<p>
+  La seconde partie du "funarg problem" est le problème "downward funarg" (le problème du <i>funarg descendant</i>). Dans ce cas un contexte parent peut exister mais peut générer une ambiguïté lors de la résolution d'un identifiant. Le problème est le suivant: depuis quelle portée doit-on résoudre la valeur d'un identifiant ? La portée enregistrée statiquement lors de la création de la fonction ou la portée formée dynamiquement à l'exécution (la portée de l'appelant) ? Afin d'éviter toute ambiguïté et pour former une <i>closure</i> il a été décidé d'utiliser une portée statique:
+</p>
+
+<pre class="prettyprint"><code class="language-javascript">// global "x"
+var x = 10;
+
+// fonction globale
+function foo() {
+  console.log(x);
+}
+
+(function (funArg) {
+
+  // "x" local
+  var x = 20;
+
+  // il n'y a aucune ambiguïté
+  // car nous utilisons la variable
+  // globale "x" qui a été statiquement
+  // enregistrée dans le [[Scope]] de
+  // la fonction "foo" et non
+  // le "x" de la portée de l'appelant
+  // qui active "funArg"
+
+  funArg(); // 10, et non 20
+
+})(foo); // passage descendant de foo
+// en tant que "funarg"
+</code></pre>
+
+<p>
+  Nous pouvons conclure qu'une portée statique est obligatoirement requise pour chaque langage qui souhaite supporter les <i>closures</i>. Cependant, certains langages proposent une mélange entre portées dynamiques et statiques permettant ainsi au programmeur de choisir ce qu'il faut fermer (<i>closure</i>) et ce qu'il ne faut pas. Du fait que seule la portée statique est utilisée en ECMAScript (et qu'une solution à été trouvée pour les deux sous-problèmes du problème "funarg") nous pouvons en conclure qu'<i>ECMAScript possède un support complet des closures</i> et qu'elles sont implémentées par l'ajout d'une propriété <code>[[Scope]]</code> à chaque fonction. Nous pouvons donc maintenant donner une définition plus exacte de ce qu'est une <i>closure</i>:
+</p>
+
+<blockquote>
+  <p>
+    Une <i>closure</i> est la combinaison d'un bloc de code (une fonction en ECMAScript) et des portées parentes statiquement/lexicalement enregistrées. Une fonction peut facilement résoudre ses variables libres à l’aide de ses portées enregistrées.
+  </p>
+</blockquote>
+
+<p>
+  Du fait que <i>chaque</i> fonction enregistre son <code>[[Scope]]</code> lors de sa création nous pouvons en déduire que <i>théoriquement</i>, toutes les fonctions en ECMAScript sont des <i>closures</i>.
+</p>
+
+<p>
+  <!-- #todo il manque quelques détails -->
+  Autre point important, plusieurs fonctions peuvent avoir <i>la même portée parent</i>. Dans ce cas, les variables stockées dans la propriété <code>[[Scope]]</code> sont <i>partagées entre toutes les fonctions</i>. Les modifications réalisées sur des variables dans une <i>closure</i> seront reflétées lors de la lecture de ces variables depuis une autre <i>closure</i>.
+</p>
+
+<pre class="prettyprint"><code class="language-javascript">function baz() {
+  var x = 1;
+  return {
+    foo: function foo() { return ++x; },
+    bar: function bar() { return --x; }
+  };
+}
+
+var closures = baz();
+
+console.log(
+  closures.foo(), // 2
+  closures.bar()  // 1
+);
+</code></pre>
+
+<p>
+  Ce code peut être illustré par le schéma suivant:
+</p>
+
+<figure>
+  <img src="_voyage-au-coeur-de-javascript/shared-scope.png" alt="">
+  <figcaption>Figure 11. Un <i>[[Scope]]</i> partagé.</figcaption>
+</figure>
+
+<p>
+  C'est précisément cette caractérique qui crée parfois une confusion lors de la création de plusieurs fonctions dans une boucle. En utilisant la variable <i>compteur</i> de la boucle directement dans les fonctions créés, certains développeurs obtiennent parfois des résultats non désirés où chaque fonction possède la même valeur de la variable <i>compteur</i>. Maintenant nous savons pourquoi. En réalité ces fonctions possèdent le même <code>[[Scope]]</code> où la variable compteur possède sa dernière valeur assignée.
+</p>
+
+<pre class="prettyprint"><code class="language-javascript">var data = [];
+
+for (var k = 0; k < 3; k++) {
+  data[k] = function () {
+    alert(k);
+  };
+}
+
+data[0](); // 3 et non 0
+data[1](); // 3 et non 1
+data[2](); // 3 et non 2
+</code></pre>
+
+<p>
+  Plusieurs techniques existent pour résoudre ce type de problème. L'une d'elle consiste à ajouter un nouvel objet dans la chaîne des portées (par exemple en y ajoutant une nouvelle fonction).
+</p>
+
+<pre class="prettyprint"><code class="language-javascript">var data = [];
+
+for (var k = 0; k < 3; k++) {
+  data[k] = (function (x) {
+    return function () {
+      alert(x);
+    };
+  })(k); // passage de la valeur de "k"
+}
+
+// les résultats sont corrects
+data[0](); // 0
+data[1](); // 1
+data[2](); // 2
+</code></pre>
+
+<!-- #todo lien vers Chapter 6. Closure ? -->
+<p>
+  Passons maintenant au chapitre suivant qui concerne la dernière propriété d'un contexte d'exécution: la valeur <code>this</code>.
+</p>
+
+<a name="La_valeur_this"></a>
+<h4>La valeur this</h4>
+
+<blockquote>
+  <p>
+    <code>this</code> est un objet spécial qui est lié au contexte d'exécution. Il peut être vu comme étant l'<i>objet contexte</i>.<!-- (c'est à dire un objet où sont contexte, le contexte d'exécution, est activé)-->
+  </p>
+</blockquote>
+
+<p>
+  <i>N'importe quel objet</i> peut-être utilisé comme valeur <code>this</code> du contexte. <!-- #todo manque des traductions --> Il y a parfois des erreurs dans les articles et livres traitant du contexte d'exécution d'ECMAScript et en particulier de <code>this</code>. <code>this</code> est souvent décrit, par erreur, comme étant une propriété de l'objet des variables.
+</p>
+
+<blockquote>
+  <p>
+    <code>this</code> est une propriété du contexte d'exécution et <i>non</i> une propriété de la variable objet.
+  </p>
+</blockquote>
+
+<p>
+  Cette caractéristique est très importante car contrairement aux <i>variables</i>, <code>this</code> ne participe <i>jamais au processus de résolution des identifiants</i>. Lorsque l'on accède à <code>this</code> depuis le code, sa valeur est récupérée directement depuis le contexte d'exécution et sans aucun parcours de la chaîne des portées. La valeur de <code>this</code> est déterminée seulement une fois: lors de l'entrée dans le contexte.
+</p>
+
+<p>
+  Contrairement à ECMAScript, Python possède l'argument <code>self</code> dans ses méthodes. <code>self</code> est une simple variable qui est résolue de la même manière qu'un argument lambda et qui peut être changé durant l'exécution par une autre valeur. En ECMAScript il <i>n'est pas possible</i> d'assigner une nouvelle valeur à <code>this</code>, parce que, une fois de plus, ce n'est pas une variable et qu'elle n'est pas placée dans l'objet des variables.
+</p>
+
+<p>
+  Dans le contexte global, <code>this</code> est <i>l'objet global lui-même</i> (cela veut dire que <i>this</i> est égal à l'<i>objet des variables</i>):
+</p>
+
+<pre class="prettyprint"><code class="language-javascript">var x = 10;
+
+console.log(
+  x, // 10
+  this.x, // 10
+  window.x // 10
+);</code></pre>
+
+<p>
+  Dans le cas du contexte d'une fonction, la valeur de <code>this</code> peut être <i>différente</i> pour chaque appel de fonction. Ici la valeur de <code>this</code> est fournie par l'appellant (le <i>caller</i>) via une expression d'appel (<i>call expression</i>) (c'est à dire la façon dont une fonction est activée). Par exemple, la fonction <code>foo</code> ci-dessous (l'<i>appelée</i>) est appelée depuis le contexte global (l'<i>appelant</i>). Regardons dans l'exemple ci-dessous comment, pour le même code d'une fonction, la valeur de <code>this</code> diffère selon l'appelant:
+</p>
+
+<pre class="prettyprint"><code class="language-javascript">// le code de la fonction "foo"
+// ne change jamais, mais la valeur "this"
+// diffère à chaque activation
+
+function foo() {
+  alert(this);
+}
+
+// l'appelant active "foo" (l'appelé)
+// et lui fourni "this"
+
+foo(); // objet global
+foo.prototype.constructor(); // foo.prototype
+
+var bar = {
+  baz: foo
+};
+
+bar.baz(); // bar
+
+(bar.baz)(); // bar aussi
+(bar.baz = bar.baz)(); // mais ici il s'agit de l'objet global
+(bar.baz, bar.baz)(); // toujours l'objet global
+(false || bar.baz)(); // l'objet global ici aussi
+
+var otherFoo = bar.baz;
+otherFoo(); // encore l'objet global
+</code></pre>
+
+<p>
+  Afin de comprendre précisément pourquoi (et surtout <i>comment</i>) la valeur de <code>this</code> peut changer suivant les appels, référez-vous au <a href="http://dmitrysoshnikov.com/ecmascript/chapter-3-this/" rel="nofollow "title="Chapter 3. This">Chapter 3. This</a> où tous les cas mentionnés précédemment sont étudiés plus en détail.
+</p>
+
+<a name="Conclusion"></a>
+<h4>Conclusion</h4>
+
+<p>
+  Nous venons de terminer ce bref aperçu d'ECMAScript 3 (bien que l'explication de tous ces sujets demanderait un livre complet). Nous n'avons pas abordé deux sujets majeurs: les <i>fonctions</i> (et la différence entre leurs différents types, <i>function declaration</i> et <i>function expression</i>) et la stratégie d'évaluation utilisée en ECMAScript. Ces deux sujets sont traités dans <a href="http://dmitrysoshnikov.com/ecmascript/chapter-5-functions/" title="" rel="nofollow">Chapter 5. Fonctions</a> et <a href="http://dmitrysoshnikov.com/ecmascript/chapter-8-evaluation-strategy/" rel="nofollow" title="">Chapter 8. Evaluation strategy</a>.
+</p>
+
+<p>
+  <strong>Relecteurs</strong>: <a href="http://twitter.com/bpierre" rel="nofollow" title="">Pierre Bertet</a> et <a href="http://twitter.com/pirhoo" rel="nofollow">Pierre Romera</a>.
+</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+    var disqus_shortname = 'fgribreau';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+
+      </div><!-- /span10 -->
+
+      <div class="span6">
+        <div class="alert-message warning">
+          <p>
+            <strong>Type de lecteur</strong>: Développeurs expérimentés, professionnels.
+          </p>
+        </div>
+
+
+
+
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p><small>&copy; Francois-Guillaume Ribreau, 2011</small></p>
+  </footer>
+
+  <!-- Y U NO PUT LESS INCLUDE -->
+  <script src="./js/prettify.js" type="text/javascript" charset="utf-8"></script>
+
+  <script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>
+
+  <script type="text/javascript">
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+  </script>
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1844157-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</div> <!-- /container -->
+</body>
+</html>
