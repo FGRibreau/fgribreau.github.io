@@ -34,6 +34,10 @@ const paths = {
   blog: {
     src: 'blog/**',
     dest: 'dist/blog'
+  },
+  articles: {
+    src: 'articles/**',
+    dest: 'dist/articles'
   }
 };
 
@@ -44,7 +48,7 @@ const autoprefixerOptions = {
 
 // Developpement's tasks
 gulp.task('serve', [
-  'sass', 'js', 'html', 'img', 'blog-build',
+  'sass', 'js', 'html', 'img', 'blog-build','articles-build',
 ], function() {
   browserSync.init({server: paths.build, open: false});
   gulp.watch(paths.scss.src, ['sass']);
@@ -78,6 +82,10 @@ gulp.task('blog-build', function() {
   return gulp.src(paths.blog.src).pipe(gulp.dest(paths.blog.dest));
 });
 
+gulp.task('articles-build', function() {
+  return gulp.src(paths.articles.src).pipe(gulp.dest(paths.articles.dest));
+});
+
 gulp.task('img', function() {
   return gulp.src(paths.img.src).pipe(plugins.imagemin()).pipe(gulp.dest(paths.img.dest));
 });
@@ -103,7 +111,7 @@ gulp.task('sizereport', function() {
   return gulp.src(`${paths.build}**`).pipe(sizereport({gzip: true}));
 });
 
-gulp.task('build', ['html-build', 'sass-build', 'js-build', 'img-build', 'blog-build']);
+gulp.task('build', ['html-build', 'sass-build', 'js-build', 'img-build', 'blog-build', 'articles-build']);
 gulp.task('default', gulpSequence('build'));
 
 // Clean
