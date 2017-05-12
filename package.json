@@ -1,7 +1,7 @@
 {
   "name": "fgribreau.com",
   "private": true,
-  "version": "1.0.33",
+  "version": "1.0.34",
   "description": "Landing page of fgribreau.com",
   "scripts": {
     "start-dev": "gulp serve",
