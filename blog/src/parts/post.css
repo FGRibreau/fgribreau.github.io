@@ -1,0 +1,25 @@
+/* post */
+
+.post.hentry{
+  position:relative;
+}
+
+.date-header{
+  /* extracted from p */
+  font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 21px;
+  line-height: 1.58;
+  letter-spacing: -.003em;
+
+  position: absolute;
+  right: -100px;
+  top: 0px;
+  text-align: center;
+  width: 100px;
+}
+
+.post-footer{
+  margin-top:39px;
+}
