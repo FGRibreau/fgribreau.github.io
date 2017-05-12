@@ -31,7 +31,7 @@ module.exports = {
   ],
   testimonials: [
     {
-      quote: `Francois-Guillaume was one of the best mentors that I've work with on Codementor, he was competent, straight-forward, and got the issues resolved with a few minutes leftover. I'd highly recommend him and look forward to do another session in the near future.`,
+      quote: `Francois-Guillaume was one of the best mentors that I've work with on Codementor, he was competent, straight-forward, and got the issues resolved with a few minutes leftover. I'd highly recommend him and look forward to do another session in the near future`,
       who: 'Andrew Kelley, Stealth Startup Co-founder',
       // when:2017,
       tags: 'consulting,2017,postgresql,postgrest'.split(','),
