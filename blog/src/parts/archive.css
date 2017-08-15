@@ -1,5 +1,5 @@
-.BlogArchive .widget-content{
-  margin-top:16px;
+.BlogArchive .widget-content {
+  margin-top: 16px;
 }
 
 #ArchiveList ul {
@@ -19,8 +19,8 @@
   font-size: 14px;
 }
 
-#ArchiveList ul > li:before{
-  display:none;
+#ArchiveList ul > li:before {
+  display: none;
 }
 
 #ArchiveList a {

@@ -1,25 +1,24 @@
-body{
-  background: no-repeat url('../../img/header_background.png');
+body {
+  background: no-repeat url('../img/header.png');
   background-size: contain;
   background-position: 0px 0px;
   width: 100%;
 }
 
-#navbar-iframe-container{
-  display: none!important;
+#navbar-iframe-container {
+  display: none !important;
 }
 
-#menu_tabLabs{
-  display:none;
+#menu_tabLabs {
+  display: none;
 }
-
 
 #header-wrapper,
 #content-wrapper,
-#footer-wrapper{
+#footer-wrapper {
   width: 700px;
-  padding:0px 1.5rem;
-  margin:0 auto;
-  background:#fff;
-  background:rgba(255, 255, 255, 0.8);
+  padding: 0px 1.5rem;
+  margin: 0 auto;
+  background: #fff;
+  background: rgba(255, 255, 255, 0.8);
 }

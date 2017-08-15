@@ -1,13 +1,13 @@
-.widget-item-control{
+.widget-item-control {
   position: relative;
 }
 
-.item-control.blog-admin{
+.item-control.blog-admin {
   position: absolute;
   right: -25%;
   top: 0px;
 }
 
-.item-control.blog-admin a{
+.item-control.blog-admin a {
   background: none;
 }

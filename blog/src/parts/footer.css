@@ -1,13 +1,13 @@
 #footer-left,
-#footer-right{
-  width:49%;
-  display:inline-block;
+#footer-right {
+  width: 49%;
+  display: inline-block;
   vertical-align: top;
 }
 
 #copy {
   color: #aaa;
-  margin-top:2rem;
+  margin-top: 2rem;
   font-size: 0.6em;
   letter-spacing: 0.1em;
   text-align: center;
@@ -16,19 +16,20 @@
   vertical-align: middle;
   height: 40px;
   word-spacing: 0.2em;
-  border-top: 1px solid #DDD;
+  border-top: 1px solid #ddd;
 }
 
-  #copy a, #copy a:link{
-    color:#EF7E68;
-    border: 0;
-    vertical-align:top;
-    background: none;
-  }
+#copy a,
+#copy a:link {
+  color: #ef7e68;
+  border: 0;
+  vertical-align: top;
+  background: none;
+}
 
-  #copy:hover a{
-    font-size: 4em;
-    vertical-align: middle;
-    color:#FF1F1F;
-    text-decoration:none;
-  }
+#copy:hover a {
+  font-size: 4em;
+  vertical-align: middle;
+  color: #ff1f1f;
+  text-decoration: none;
+}

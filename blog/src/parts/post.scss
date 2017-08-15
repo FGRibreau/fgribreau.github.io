@@ -1,16 +1,16 @@
 /* post header */
 
-.status-msg-wrap{
+.status-msg-wrap {
   margin: 0;
   width: 100%;
 
-  .status-msg-body{
+  .status-msg-body {
     padding: 0;
   }
 
-  .status-msg-border{
-    .status-msg-bg{
-      a{
+  .status-msg-border {
+    .status-msg-bg {
+      a {
         background-image: none;
       }
     }
@@ -30,7 +30,7 @@
   }
 
   blockquote {
-    border-left: 3px solid rgba(0,0,0,.8);
+    border-left: 3px solid rgba(0, 0, 0, .8);
     padding-left: 20px;
     margin-left: -23px;
     margin-top: $paragraph-top-margin;
@@ -41,7 +41,8 @@
     font-size: 21px;
     line-height: 1.58;
     letter-spacing: -.003em;
-    font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
+    font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman",
+      Times, serif;
   }
 
   h1.post-title {
@@ -49,7 +50,8 @@
   }
 
   pre {
-    font-family: Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
+    font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New",
+      monospace;
     overflow: scroll;
     overflow-y: hidden;
     display: block;
@@ -61,7 +63,8 @@
   }
 
   /** FEAT: gist inclusion**/
-  .gist, pre{
+  .gist,
+  pre {
     background-color: #f6f8fa;
     border-radius: 3px;
     @include large-block();
@@ -89,18 +92,18 @@
   img[src^="https://farm2.staticflickr.com"],
   img[src^="https://farm3.staticflickr.com"],
   img[src^="https://farm4.staticflickr.com"],
-  img[src^="https://farm5.staticflickr.com"]{
-    display:block;
-    width:100%;
+  img[src^="https://farm5.staticflickr.com"] {
+    display: block;
+    width: 100%;
     margin-top: $paragraph-top-margin;
-    border:4px solid #f0f0f0;
+    border: 4px solid #f0f0f0;
   }
-
 }
 
 .date-header {
   /* extracted from p */
-  font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
+  font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman",
+    Times, serif;
   font-weight: 400;
   font-style: italic;
   font-size: 17px;
