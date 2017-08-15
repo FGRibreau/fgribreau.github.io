@@ -5,7 +5,7 @@
   "description": "Landing page of fgribreau.com",
   "scripts": {
     "start-dev": "gulp serve",
-    "postinstall": "npm run build",
+    "postinstall": "(cd blog && npm install)",
     "build": "echo 'building website' && gulp default && (cd blog && npm run build)",
     "preversion": "npm run --silent build",
     "updtr": "updtr"
