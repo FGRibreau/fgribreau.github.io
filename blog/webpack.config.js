@@ -1,7 +1,7 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 
-const DIST = path.resolve(__dirname, 'dist');
+const DIST = path.resolve(__dirname, '../dist/blog/dist');
 
 module.exports = {
   devtool: 'source-map', // any "source-map"-like devtool is possible
