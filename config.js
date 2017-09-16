@@ -1,7 +1,8 @@
 module.exports = {
   site: {
     name: 'François-Guillaume Ribreau',
-    title: 'François-Guillaume Ribreau - Full Stack CTO, Startup Tech Advisor/Mentor, Hacker',
+    title:
+      'François-Guillaume Ribreau - Full Stack CTO, Startup Tech Advisor/Mentor, Hacker',
     description: 'Full Stack CTO, Startup Tech Advisor, Mentor, Hacker',
     url: 'http://fgribreau.com/',
     favicon: 'https://avatars.io/twitter/fgribreau/small',
@@ -9,25 +10,44 @@ module.exports = {
   },
   photos: [
     {
-      url: 'https://farm4.staticflickr.com/3755/33408896341_4827b770a8_o_d.jpg',
-      description: 'FGRibreau, photo prise à St Sebastien sur Loire, le 06/11/2016',
+      url: 'https://farm5.staticflickr.com/4281/35693061171_59c06d6fad_k_d.jpg',
+      description: `FGRibreau, photo prise à L'Ile-D'Yeu, le 09/07/2017`,
     },
     {
-      url: 'https://farm3.staticflickr.com/2871/33408896471_123bf010d3_o_d.jpg',
+      url: 'https://farm5.staticflickr.com/4288/35656223192_7b8d0c8058_o_d.jpg',
+      description: `FGRibreau, photo prise à L'Ile-D'Yeu, le 09/07/2017`,
+    },
+    {
+      url: 'https://farm6.staticflickr.com/5750/30337600623_4f3651dbfc_k_d.jpg',
+      description:
+        'FGRibreau, photo prise à St Sebastien sur Loire, le 06/11/2016',
+    },
+    {
+      url: 'https://farm1.staticflickr.com/274/32511433521_7615c9f70e_k_d.jpg',
       description: 'FGRibreau, photo prise à la Cigale à Nantes, le 29/11/2016',
     },
     {
-      url: 'https://farm4.staticflickr.com/3672/32723056613_1f79591324_o_d.jpg',
-      description: 'FGRibreau, photo prise au Musée Dobré à Nantes, le 20/12/2016',
+      url: 'https://farm6.staticflickr.com/5512/31759226871_b236eafcf6_k_d.jpg',
+      description:
+        'FGRibreau, photo prise au Musée Dobré à Nantes, le 20/12/2016',
     },
     {
-      url: 'https://farm4.staticflickr.com/3791/32723056533_11342b9630_o_d.jpg',
-      description: 'FGRibreau, photo prise au Walt Restaurant à DisneyLand Paris, le 20/11/2016',
+      url: 'https://farm6.staticflickr.com/5344/30777129400_691ad26e8e_k_d.jpg',
+      description:
+        'FGRibreau, photo prise au Walt Restaurant à DisneyLand Paris, le 20/11/2016',
     },
     {
-      url: 'https://farm4.staticflickr.com/3727/32723056633_a090ca3c00_o_d.jpg',
-      description: 'FGRibreau, photo prise à La Chesnaie, le 06/11/2016',
+      url: 'https://farm4.staticflickr.com/3871/32718615263_710700afae_k_d.jpg',
+      description: 'FGRibreau, photo prise à Porto, le 18/03/2017',
     },
+    {
+      url: 'https://farm3.staticflickr.com/2926/33895526236_4276a52fd8_k_d.jpg',
+      description: 'FGRibreau, photo prise à Chantonnay, le 09/04/2017',
+    },
+    // {
+    //   url: 'https://farm4.staticflickr.com/3727/32723056633_a090ca3c00_o_d.jpg',
+    //   description: 'FGRibreau, photo prise à La Chesnaie, le 06/11/2016',
+    // },
   ],
   testimonials: [
     {
