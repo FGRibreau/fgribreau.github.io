@@ -1,8 +1,6 @@
 #header-wrapper {
   text-align: center;
-  padding-bottom: 1rem;
-  padding-top: 3rem;
-  // border-radius:100px 100px 0px 0px;
+  height: 300px;
 }
 
 #header-wrapper h1 a {
@@ -12,13 +10,18 @@
 
 #header-wrapper .title {
   margin: 0;
-  padding: 1rem 0 0 0;
+  padding: 80px 0 0 0;
   font-weight: 100;
   line-height: 1;
-  font-size: 2.5rem;
+  font-size: 3rem;
+  text-decoration: underline;
+  font-family: cursive;
 }
 
 #header-wrapper .descriptionwrapper {
+  font-family: sans-serif;
+  margin-top: 25px;
+
   a {
     display: inline-block;
     margin-right: 0;
@@ -29,6 +32,7 @@
 
   iframe#twitter-widget-0 {
     vertical-align: middle;
+    margin-top: 5px;
   }
 }
 

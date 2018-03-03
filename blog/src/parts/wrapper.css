@@ -1,7 +1,5 @@
 body {
-  background: no-repeat url('../img/header.png');
-  background-size: contain;
-  background-position: 0px 0px;
+  background: repeat-x url(../img/pierre3.png) 50% 0%;
   width: 100%;
 }
 
