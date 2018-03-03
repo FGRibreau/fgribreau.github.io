@@ -6,15 +6,17 @@
   "scripts": {
     "start-dev": "gulp serve",
     "postinstall": "(cd blog && npm install)",
-    "build": "echo 'building website' && gulp default && (cd blog && npm run build)",
+    "build":
+      "echo 'building website' && gulp default && (cd blog && npm run build)",
     "deploy": "npm-release patch",
     "preversion": "npm run --silent build",
     "updtr": "updtr"
   },
   "engines": {
-    "node": "6.3.0"
+    "node": "8"
   },
-  "author": "Francois-Guillaume Ribreau <npm@fgribreau.com> (http://fgribreau.com/)",
+  "author":
+    "Francois-Guillaume Ribreau <npm@fgribreau.com> (http://fgribreau.com/)",
   "license": "FGRibreau",
   "homepage": "http://fgribreau.com",
   "devDependencies": {
