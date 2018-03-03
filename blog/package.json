@@ -2,7 +2,8 @@
   "name": "blog.fgribreau.com",
   "version": "0.0.1",
   "private": true,
-  "author": "Francois-Guillaume Ribreau <npm@fgribreau.com> (http://fgribreau.com/)",
+  "author":
+    "Francois-Guillaume Ribreau <npm@fgribreau.com> (http://fgribreau.com/)",
   "engines": {
     "node": "6"
   },
@@ -25,5 +26,5 @@
     "webpack": "^1.14.0"
   },
   "license": "FGRibreau",
-  "description": ""
+  "description": "FGRibreau blog static-side."
 }

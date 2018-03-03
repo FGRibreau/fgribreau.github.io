@@ -40,7 +40,7 @@
   }
 
   blockquote {
-    border-left: 3px solid rgba(0, 0, 0, .8);
+    border-left: 3px solid rgba(0, 0, 0, 0.8);
     padding-left: 20px;
     margin-left: -23px;
     margin-top: $paragraph-top-margin;
@@ -50,8 +50,8 @@
     font-style: italic;
     font-size: 21px;
     line-height: 1.58;
-    letter-spacing: -.003em;
-    font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman",
+    letter-spacing: -0.003em;
+    font-family: medium-content-serif-font, Georgia, Cambria, 'Times New Roman',
       Times, serif;
   }
 
@@ -60,7 +60,7 @@
   }
 
   pre {
-    font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New",
+    font-family: Menlo, Monaco, 'Andale Mono', 'lucida console', 'Courier New',
       monospace;
     overflow: scroll;
     overflow-y: hidden;
@@ -117,20 +117,21 @@
   /** FEAT: Tweet inclusion **/
   .twitter-tweet,
   .instagram-media {
-    margin: 0 auto;
-    display: block;
+    margin: 0 auto !important;
+    display: block !important;
+    margin-top: 29px !important;
   }
 }
 
 .date-header {
   /* extracted from p */
-  font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman",
+  font-family: medium-content-serif-font, Georgia, Cambria, 'Times New Roman',
     Times, serif;
   font-weight: 400;
   font-style: italic;
   font-size: 17px;
   line-height: 1.58;
-  letter-spacing: -.003em;
+  letter-spacing: -0.003em;
   padding-top: 58px;
   display: block;
 }
