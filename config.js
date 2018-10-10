@@ -51,6 +51,12 @@ module.exports = {
   ],
   testimonials: [
     {
+      quote: `L’une des meilleures conférence sur les API ever, tant sur le fond (la doctrine, le rappel des fondamentaux), que sur la forme : directe, décapante et soutenue, bravo`,
+      who: "Thierry Gaillet, Orange Dev. Director",
+      // when:2018,
+      tags: "lectures,2018,web2day,api".split(",")
+    },
+    {
       quote: `Francois-Guillaume was one of the best mentors that I've work with on Codementor, he was competent, straight-forward, and got the issues resolved with a few minutes leftover. I'd highly recommend him and look forward to do another session in the near future`,
       who: 'Andrew Kelley, Stealth Startup Co-founder',
       // when:2017,
@@ -68,7 +74,13 @@ module.exports = {
       quote: `Indéniablement passionné par son métier et par l'informatique en général, il partage ses expériences, ses connaissances avec son public, rendant ses cours réellement dynamiques, intéressants et proches de la réalité professionnelle`,
       who: 'Larboulette P., TIKEASY',
       // when:2015,
-      tags: 'lectures,2015,epsi,NoSQL'.split(','),
+      tags: "lectures,2015,epsi,NoSQL".split(",")
+    },
+    {
+      quote: `Meilleure conférence de tout le #web2day #blowmymind`,
+      who: "Guillaume Cisco, Medialibs",
+      // when:2018,
+      tags: "lectures,2018,web2day,api".split(",")
     },
 
     {
