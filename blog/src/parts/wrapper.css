@@ -20,3 +20,11 @@ body {
   background: #fff;
   background: rgba(255, 255, 255, 0.8);
 }
+
+@media only screen and (max-width: 600px) {
+  #header-wrapper,
+  #content-wrapper,
+  #footer-wrapper {
+    width: auto;
+  }
+}
