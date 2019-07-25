@@ -81,7 +81,8 @@
   }
 
   /** FEAT: gif inclusion (giphy) **/
-  img[src^="https://media.giphy.com"] {
+  img[src^="https://media.giphy.com"],
+  img[src^="https://i.giphy.com/media"]{
     margin-left: auto;
     margin-right: auto;
     display: block;
