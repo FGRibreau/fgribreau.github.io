@@ -63,6 +63,14 @@ module.exports = {
       tags: 'consulting,2017,postgresql,postgrest'.split(','),
     },
     {
+      quote: `François-Guillaume a su nous apporter un ensemble de solutions, mais aussi s'adapter aux nouvelles problématiques soulevées et réfléchir avec l'équipe de développement à de nouvelles propositions. L'étendue de ses compétences et la maîtrise de l'architecture projet dans son ensemble ont été particulièrement appréciées`,
+      who: 'Philippot Emmanuel, Cognix Systems',
+      // when:2019,
+      tags: 'consulting,2019,organisation,transformation,scalabilité,IAM,sécurité'.split(
+        ','
+      ),
+    },
+    {
       quote: `François-Guillaume possède à la fois une culture générale informatique très large et une expertise pointue des nouvelles technologies. Ses connaissances théoriques sont illustrées par sa propre expérience terrain, ce qui apporte un éclairage particulièrement intéressant sur les best practices`,
       who: 'Jin Lei, Hermes Technologies CTO',
       // when:2017,
