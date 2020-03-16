@@ -14,9 +14,9 @@
   "engines": {
     "node": "8"
   },
-  "author": "Francois-Guillaume Ribreau <npm@fgribreau.com> (http://fgribreau.com/)",
+  "author": "Francois-Guillaume Ribreau <npm@fgribreau.com> (https://fgribreau.com/)",
   "license": "FGRibreau",
-  "homepage": "http://fgribreau.com",
+  "homepage": "https://fgribreau.com",
   "devDependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^6.4.0",

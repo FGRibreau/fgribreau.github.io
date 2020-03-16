@@ -4,7 +4,7 @@ module.exports = {
     title:
       'François-Guillaume Ribreau - Full Stack CTO, Startup Tech Advisor/Mentor, Hacker',
     description: 'Full Stack CTO, Startup Tech Advisor, Mentor, Hacker',
-    url: 'http://fgribreau.com/',
+    url: 'https://fgribreau.com/',
     favicon: 'https://avatars.io/twitter/fgribreau/small',
     image: 'https://avatars.io/twitter/fgribreau/large',
   },

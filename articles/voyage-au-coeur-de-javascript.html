@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html itemscope itemtype="http://schema.org/Article">
+<html itemscope itemtype="https://schema.org/Article">
 <head>
   <meta charset="utf-8" />
 
@@ -42,7 +42,7 @@
 
     /*
       HTML5 convention
-      http://dev.w3.org/html5/spec-author-view/the-code-element.html#the-code-element
+      https://dev.w3.org/html5/spec-author-view/the-code-element.html#the-code-element
     */
 
     pre code{
@@ -98,7 +98,7 @@
 
 
 <p>
-  Cet article est une traduction de <a href="http://dmitrysoshnikov.com/ecmascript/javascript-the-core/">JavaScript. The Core</a> écrit par Dmitry Soshnikov. Javascript The Core est un sommaire détaillé de la série d’article &#8220;<a href="http://dmitrysoshnikov.com/tag/ecma-262-3/">ECMA-262-3 in detail</a>&#8221;.
+  Cet article est une traduction de <a href="https://dmitrysoshnikov.com/ecmascript/javascript-the-core/">JavaScript. The Core</a> écrit par Dmitry Soshnikov. Javascript The Core est un sommaire détaillé de la série d’article &#8220;<a href="https://dmitrysoshnikov.com/tag/ecma-262-3/">ECMA-262-3 in detail</a>&#8221;.
 </p>
 
 <ol><li><a href="#L_objet">L'objet</a></li><li><a href="#Le_cha_nage_des_prototypes">Le chaînage des prototypes</a></li><li><a href="#Le_constructeur">Le constructeur</a></li><li><a href="#La_pile_des_contextes_d_ex_cution">La pile des contextes d'exécution</a></li><li><a href="#Le_contexte_d_ex_cution">Le contexte d'exécution</a></li><li><a href="#L_objet_des_variables">L'objet des variables</a></li><li><a href="#L_objet_d_activation">L'objet d'activation</a></li><li><a href="#La_cha_ne_des_port_es__Scope_chain_">La chaîne des portées (Scope chain)</a></li><li><a href="#Les_closures__fermeture_">Les closures (fermeture)</a></li><li><a href="#La_valeur_this">La valeur this</a></li><li><a href="#Conclusion">Conclusion</a></li></ol>
@@ -287,7 +287,7 @@ console.log(
 </p>
 
 <p>
-  Nous venons donc de <i>classifier</i> notre code grâce à <code>Foo</code>. Nous pouvons appeler cette combinaison constructeur + prototype une &#8220;classe&#8221;. En Python, les classes dynamiques fonctionnent exactement de la même manière pour la résolution des propriétés et des méthodes. De ce point de vue les classes en Python sont juste un sucre syntaxique de l'héritage basé sur la délégation (<i>delegation based inheritance</i>) utilisé en ECMAScript. L'explication complète et détaillée de ce méchanisme est décrite dans le chapitre 7 des <i>ES3 Series</i>: <a href="http://dmitrysoshnikov.com/ecmascript/chapter-7-1-oop-general-theory/" title="">Chapter 7.1. OOP. The general theory</a> et <a href="http://dmitrysoshnikov.com/ecmascript/chapter-7-1-oop-general-theory/" title="">Chapter 7.2. OOP. ECMAScript implementation</a>.
+  Nous venons donc de <i>classifier</i> notre code grâce à <code>Foo</code>. Nous pouvons appeler cette combinaison constructeur + prototype une &#8220;classe&#8221;. En Python, les classes dynamiques fonctionnent exactement de la même manière pour la résolution des propriétés et des méthodes. De ce point de vue les classes en Python sont juste un sucre syntaxique de l'héritage basé sur la délégation (<i>delegation based inheritance</i>) utilisé en ECMAScript. L'explication complète et détaillée de ce méchanisme est décrite dans le chapitre 7 des <i>ES3 Series</i>: <a href="https://dmitrysoshnikov.com/ecmascript/chapter-7-1-oop-general-theory/" title="">Chapter 7.1. OOP. The general theory</a> et <a href="https://dmitrysoshnikov.com/ecmascript/chapter-7-1-oop-general-theory/" title="">Chapter 7.2. OOP. ECMAScript implementation</a>.
 </p>
 
 <p>
@@ -356,7 +356,7 @@ foo(30);
 </p>
 
 <p>
-  Pour plus d'information sur les contextes d'exécution en ECMAScript consultez <a href="http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contextes/">Chapter 1. Execution context</a>.
+  Pour plus d'information sur les contextes d'exécution en ECMAScript consultez <a href="https://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contextes/">Chapter 1. Execution context</a>.
 </p>
 
 <p>
@@ -447,7 +447,7 @@ console.log(baz); // ReferenceError, "baz" n'est pas définie
 <h4>L'objet d'activation</h4>
 
 <p>
-  Quand une fonction est <i>activée</i> (appelée) par son appelant, un objet special appelé <i>objet d'activation</i> est créé. Il est rempli des <i><a href="http://fr.wikipedia.org/wiki/Param%C3%A8tre#Param.C3.A8tre_formel" >paramètres formels</a></i> et de l'objet special <code>arguments</code>. L'<i>objet d'activation</i> est ensuite utilisé comme étant l'objet des variables dans le contexte de la fonction.
+  Quand une fonction est <i>activée</i> (appelée) par son appelant, un objet special appelé <i>objet d'activation</i> est créé. Il est rempli des <i><a href="https://fr.wikipedia.org/wiki/Param%C3%A8tre#Param.C3.A8tre_formel" >paramètres formels</a></i> et de l'objet special <code>arguments</code>. L'<i>objet d'activation</i> est ensuite utilisé comme étant l'objet des variables dans le contexte de la fonction.
 </p>
 
 <p>
@@ -837,18 +837,18 @@ otherFoo(); // encore l'objet global
 </code></pre>
 
 <p>
-  Afin de comprendre précisément pourquoi (et surtout <i>comment</i>) la valeur de <code>this</code> peut changer suivant les appels, référez-vous au <a href="http://dmitrysoshnikov.com/ecmascript/chapter-3-this/" rel="nofollow "title="Chapter 3. This">Chapter 3. This</a> où tous les cas mentionnés précédemment sont étudiés plus en détail.
+  Afin de comprendre précisément pourquoi (et surtout <i>comment</i>) la valeur de <code>this</code> peut changer suivant les appels, référez-vous au <a href="https://dmitrysoshnikov.com/ecmascript/chapter-3-this/" rel="nofollow "title="Chapter 3. This">Chapter 3. This</a> où tous les cas mentionnés précédemment sont étudiés plus en détail.
 </p>
 
 <a name="Conclusion"></a>
 <h4>Conclusion</h4>
 
 <p>
-  Nous venons de terminer ce bref aperçu d'ECMAScript 3 (bien que l'explication de tous ces sujets demanderait un livre complet). Nous n'avons pas abordé deux sujets majeurs: les <i>fonctions</i> (et la différence entre leurs différents types, <i>function declaration</i> et <i>function expression</i>) et la stratégie d'évaluation utilisée en ECMAScript. Ces deux sujets sont traités dans <a href="http://dmitrysoshnikov.com/ecmascript/chapter-5-functions/" title="" rel="nofollow">Chapter 5. Fonctions</a> et <a href="http://dmitrysoshnikov.com/ecmascript/chapter-8-evaluation-strategy/" rel="nofollow" title="">Chapter 8. Evaluation strategy</a>.
+  Nous venons de terminer ce bref aperçu d'ECMAScript 3 (bien que l'explication de tous ces sujets demanderait un livre complet). Nous n'avons pas abordé deux sujets majeurs: les <i>fonctions</i> (et la différence entre leurs différents types, <i>function declaration</i> et <i>function expression</i>) et la stratégie d'évaluation utilisée en ECMAScript. Ces deux sujets sont traités dans <a href="https://dmitrysoshnikov.com/ecmascript/chapter-5-functions/" title="" rel="nofollow">Chapter 5. Fonctions</a> et <a href="https://dmitrysoshnikov.com/ecmascript/chapter-8-evaluation-strategy/" rel="nofollow" title="">Chapter 8. Evaluation strategy</a>.
 </p>
 
 <p>
-  <strong>Relecteurs</strong>: <a href="http://twitter.com/bpierre" rel="nofollow" title="">Pierre Bertet</a> et <a href="http://twitter.com/pirhoo" rel="nofollow">Pierre Romera</a>.
+  <strong>Relecteurs</strong>: <a href="https://twitter.com/bpierre" rel="nofollow" title="">Pierre Bertet</a> et <a href="https://twitter.com/pirhoo" rel="nofollow">Pierre Romera</a>.
 </p>
 
 <div id="disqus_thread"></div>
@@ -857,7 +857,7 @@ otherFoo(); // encore l'objet global
     var disqus_shortname = 'fgribreau';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
@@ -905,7 +905,7 @@ otherFoo(); // encore l'objet global
 
     (function() {
       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'https://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 
