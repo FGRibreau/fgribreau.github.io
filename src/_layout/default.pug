@@ -4,6 +4,8 @@ html(lang='fr')
   include /_includes/head.pug
 
   body(class=frontPage?'js-home':'')
+    noscript
+      iframe(src="https://www.googletagmanager.com/ns.html?id=GTM-52NT5SB", height="0", width="0", style="display:none;visibility:hidden")
     include /_includes/header.pug
     block content
 
