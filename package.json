@@ -39,7 +39,7 @@
     "gulp-sizereport": "^1.2.0",
     "gulp-uglify": "^2.1.0",
     "imagemin-gifsicle": "^5.1.0",
-    "jquery": "^3.1.1",
+    "jquery": "^3.5.0",
     "json-loader": "^0.5.4",
     "npm-release": "^1.0.0",
     "updtr": "^0.2.3",
