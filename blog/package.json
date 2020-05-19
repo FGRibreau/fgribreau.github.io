@@ -8,7 +8,7 @@
   },
   "bin": {},
   "scripts": {
-    "build": "parcel build --public-url=/blog/ ./src/style.scss",
+    "build": "parcel build --public-url=/blog/dist/ ./src/style.scss",
     "build:watch": "parcel serve ./src/style.scss",
     "start:dev": "python -m SimpleHTTPServer 8080"
   },
