@@ -12,7 +12,7 @@
     "updtr": "updtr"
   },
   "engines": {
-    "node": "12"
+    "node": "8"
   },
   "author": "Francois-Guillaume Ribreau <npm@fgribreau.com> (https://fgribreau.com/)",
   "license": "FGRibreau",
