@@ -4,26 +4,23 @@
   "private": true,
   "author": "Francois-Guillaume Ribreau <npm@fgribreau.com> (https://fgribreau.com/)",
   "engines": {
-    "node": "8"
+    "node": ">=8"
   },
   "bin": {},
   "scripts": {
-    "build": "webpack",
-    "build:watch": "webpack --watch",
+    "build": "parcel build src/style.scss",
+    "build:watch": "parcel serve src/style.scss",
     "start:dev": "python -m SimpleHTTPServer 8080"
   },
   "main": "index.js",
   "keywords": [],
   "devDependencies": {
-    "css-loader": "^0.27.1",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.11.2",
-    "image-webpack-loader": "^3.2.0",
-    "node-sass": "^4.5.0",
-    "sass-loader": "^4.1.0",
-    "style-loader": "^0.13.2",
-    "webpack": "^1.14.0"
+    "cssnano": "^4.1.10",
+    "sass": "^1.26.5"
   },
   "license": "FGRibreau",
-  "description": "FGRibreau blog static-side."
+  "description": "FGRibreau blog static-side",
+  "dependencies": {
+    "parcel": "^1.12.4"
+  }
 }

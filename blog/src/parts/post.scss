@@ -59,17 +59,20 @@
     padding-top: 0;
   }
 
-  pre {
+  pre, th, td{
     font-family: Menlo, Monaco, 'Andale Mono', 'lucida console', 'Courier New',
       monospace;
+    font-size: 85%;
+    line-height: 1.45;
+  }
+
+  pre {
     overflow: scroll;
     overflow-y: hidden;
     display: block;
     padding: 10px;
     overflow-x: auto;
     margin: 0;
-    font-size: 85%;
-    line-height: 1.45;
   }
 
   /** FEAT: gist inclusion**/
@@ -78,6 +81,26 @@
     background-color: #f6f8fa;
     border-radius: 3px;
     @include large-block();
+  }
+
+  table{
+    @include large-block();
+    background-color: #f6f8fa;
+    border-radius: 3px;
+    padding:10px;
+    border-spacing: 0px;
+
+    th, td{
+      padding: 6px 6px;
+      word-break: keep-all;
+      text-align: left;
+      border-radius: 4px;
+    }
+
+    th{
+      background-color: rgba(0,0,0,.8);
+      color: #fff;
+    }
   }
 
   /** FEAT: gif inclusion (giphy) **/
