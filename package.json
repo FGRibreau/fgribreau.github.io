@@ -6,7 +6,7 @@
   "scripts": {
     "start-dev": "gulp serve",
     "postinstall": "(cd blog && npm install)",
-    "build": "echo 'building website' && gulp default && (cd blog && npm run build)",
+    "build": "echo 'building website' && gulp default",
     "deploy": "npm-release patch",
     "preversion": "npm run --silent build",
     "updtr": "updtr"

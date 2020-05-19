@@ -8,8 +8,8 @@
   },
   "bin": {},
   "scripts": {
-    "build": "parcel build src/style.scss",
-    "build:watch": "parcel serve src/style.scss",
+    "build": "parcel build ./src/style.scss",
+    "build:watch": "parcel serve ./src/style.scss",
     "start:dev": "python -m SimpleHTTPServer 8080"
   },
   "main": "index.js",
