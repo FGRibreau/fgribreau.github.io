@@ -37,13 +37,6 @@
     width: $large-block-width;
     margin-left: $large-block-margin-left;
     margin-top: $paragraph-top-margin;
-
-    @media only screen and (max-width: 1000px) {
-      table-layout: fixed;
-      width: auto;
-      margin-left: 0px;
-      margin-top: 0px;
-    }
   }
 
   blockquote {
@@ -163,6 +156,21 @@
 
   iframe + iframe {
     margin-top: 29px;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    blockquote,
+    table,
+    .gist,
+    pre {
+      width: auto;
+      margin-left: 0px;
+      margin-top: 0px;
+    }
+
+    table {
+      table-layout: fixed;
+    }
   }
 }
 
