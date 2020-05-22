@@ -38,12 +38,11 @@
     margin-left: $large-block-margin-left;
     margin-top: $paragraph-top-margin;
 
-    @media only screen and (max-width: 600px) {
-      body {
-        width: auto;
-        margin-left: 0px;
-        margin-top: 0px;
-      }
+    @media only screen and (max-width: 1000px) {
+      table-layout: fixed;
+      width: auto;
+      margin-left: 0px;
+      margin-top: 0px;
     }
   }
 
