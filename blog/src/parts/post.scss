@@ -37,13 +37,20 @@
     width: $large-block-width;
     margin-left: $large-block-margin-left;
     margin-top: $paragraph-top-margin;
+
+    @media only screen and (max-width: 600px) {
+      body {
+        width: auto;
+        margin-left: 0px;
+        margin-top: 0px;
+      }
+    }
   }
 
   blockquote {
+    @include large-block();
     border-left: 3px solid rgba(0, 0, 0, 0.8);
     padding-left: 20px;
-    margin-left: -23px;
-    margin-top: $paragraph-top-margin;
     padding-bottom: 2px;
     letter-spacing: 0.01rem;
     font-weight: 400;
@@ -51,7 +58,7 @@
     font-size: 21px;
     line-height: 1.58;
     letter-spacing: -0.003em;
-    font-family: medium-content-serif-font, Georgia, Cambria, 'Times New Roman',
+    font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman",
       Times, serif;
   }
 
@@ -59,8 +66,10 @@
     padding-top: 0;
   }
 
-  pre, th, td{
-    font-family: Menlo, Monaco, 'Andale Mono', 'lucida console', 'Courier New',
+  pre,
+  th,
+  td {
+    font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New",
       monospace;
     font-size: 85%;
     line-height: 1.45;
@@ -83,28 +92,29 @@
     @include large-block();
   }
 
-  table{
+  table {
     @include large-block();
     background-color: #f6f8fa;
     border-radius: 3px;
     border-spacing: 0px;
 
-    th, td{
+    th,
+    td {
       padding: 6px 6px;
       word-break: keep-all;
       text-align: left;
       border-radius: 4px;
     }
 
-    th{
-      background-color: rgba(0,0,0,.8);
+    th {
+      background-color: rgba(0, 0, 0, 0.8);
       color: #fff;
     }
   }
 
   /** FEAT: gif inclusion (giphy) **/
   img[src^="https://media.giphy.com"],
-  img[src^="https://i.giphy.com/media"]{
+  img[src^="https://i.giphy.com/media"] {
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -126,7 +136,7 @@
   img[src^="https://farm3.staticflickr.com"],
   img[src^="https://farm4.staticflickr.com"],
   img[src^="https://farm5.staticflickr.com"],
-  img[src^="https://live.staticflickr.com"]{
+  img[src^="https://live.staticflickr.com"] {
     display: block;
     width: 100%;
     margin-top: $paragraph-top-margin;
@@ -134,7 +144,7 @@
   }
 
   /** FEAT: Pinterest inclusion **/
-  [data-pin-log='embed_pin'] {
+  [data-pin-log="embed_pin"] {
     margin: 0 auto;
     display: block;
   }
@@ -159,7 +169,7 @@
 
 .date-header {
   /* extracted from p */
-  font-family: medium-content-serif-font, Georgia, Cambria, 'Times New Roman',
+  font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman",
     Times, serif;
   font-weight: 400;
   font-style: italic;
