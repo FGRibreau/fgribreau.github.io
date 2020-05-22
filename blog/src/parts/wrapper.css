@@ -21,7 +21,7 @@ body {
   background: rgba(255, 255, 255, 0.8);
 }
 
-@media only screen and (max-width: 100px) {
+@media only screen and (max-width: 1000px) {
   #header-wrapper,
   #content-wrapper,
   #footer-wrapper {
