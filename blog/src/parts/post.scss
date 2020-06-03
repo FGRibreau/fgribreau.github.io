@@ -128,7 +128,9 @@
   img[src^="https://farm3.staticflickr.com"],
   img[src^="https://farm4.staticflickr.com"],
   img[src^="https://farm5.staticflickr.com"],
-  img[src^="https://live.staticflickr.com"] {
+  img[src^="https://1.bp.blogspot.com"],
+  img[src^="https://live.staticflickr.com"],
+  .image {
     display: block;
     width: 100%;
     margin-top: $paragraph-top-margin;
