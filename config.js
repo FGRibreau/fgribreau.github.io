@@ -57,6 +57,12 @@ module.exports = {
       tags: "lectures,2018,web2day,api".split(",")
     },
     {
+      quote: `François-Guillaume est assurément un passionné, ses compétences et sa vision en ont fait un ambassadeur de la DSI dans le groupe Sipa/Ouest-France. Venant d’une start-up, il a su faire entrer Ouest-France dans une nouvelle dimension technologique.`,
+      who: "Guy Sauvage, DSI Ouest-France",
+      // when:2020,
+      tags: "consulting,2020,ouest-france".split(",")
+    },
+    {
       quote: `Francois-Guillaume was one of the best mentors that I've work with on Codementor, he was competent, straight-forward, and got the issues resolved with a few minutes leftover. I'd highly recommend him and look forward to do another session in the near future`,
       who: 'Andrew Kelley, Stealth Startup Co-founder',
       // when:2017,
