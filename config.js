@@ -57,6 +57,12 @@ module.exports = {
       tags: "lectures,2018,web2day,api".split(",")
     },
     {
+      quote: `Une très belle rencontre et une intervention très pertinente. Du consulting vraiment opérationnel, un shot d’expérience et de savoir faire sur mesure: stratégique & tactique`,
+      who: "Ludovic Fleury, VP Engineering Golem.ai",
+      // when:2020,
+      tags: "consulting,2020,saas".split(",")
+    },
+    {
       quote: `François-Guillaume est assurément un passionné, ses compétences et sa vision en ont fait un ambassadeur de la DSI dans le groupe Sipa/Ouest-France. Venant d’une start-up, il a su faire entrer Ouest-France dans une nouvelle dimension technologique.`,
       who: "Guy Sauvage, DSI Ouest-France",
       // when:2020,
